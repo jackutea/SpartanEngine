@@ -1,17 +1,14 @@
 #pragma once
 
-#include "EngineContext.h"
+#include "../../include/raylib.h"
 
 class EngineCommand {
 private:
-    EngineContext* ctx;
+    void* ctxPtr;
 
 public:
-    EngineCommand(EngineContext* ctx) {
-        this->ctx = ctx;
-    }
+    EngineCommand(void* ctx);
+    ~EngineCommand();
 
-    void RP_Sky_SetSolid(Color color) {
-        ctx->rp->Sky_SetSolidColor(color);
-    }
+    void RP_Sky_SetSolid(Color color);
 };

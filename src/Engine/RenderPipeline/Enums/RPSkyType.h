@@ -1,6 +1,6 @@
 #pragma once
 
-enum RPSkyType {
+enum class RPSkyType {
     None,
     SolidColor,
 };

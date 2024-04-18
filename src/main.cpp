@@ -5,7 +5,7 @@
 int main() {
 
     Engine *engine = new Engine();
-    engine->LoadBuiltInAssets();
+    engine->Initialize();
 
     UserMain *user = new UserMain();
     user->OnStart(engine->cmd);
@@ -17,6 +17,9 @@ int main() {
         float dt = GetFrameTime();
 
         {
+            // Engine Logic
+            engine->LogicTick(dt);
+            
             // User Logic
             user->OnLogicUpdate(engine->cmd, dt);
         }
@@ -29,6 +32,9 @@ int main() {
 
             // Draw
             engine->Render();
+
+            // UI
+            engine->ProcessAndRenderUI();
 
             EndDrawing();
         }

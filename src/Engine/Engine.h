@@ -12,6 +12,8 @@ public:
 public:
     Engine();
     ~Engine();
-    void LoadBuiltInAssets();
+    void Initialize();
+    void LogicTick(float dt);
     void Render();
+    void ProcessAndRenderUI();
 };
