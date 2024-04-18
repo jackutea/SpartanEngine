@@ -4,13 +4,13 @@
 
 int main() {
 
+    InitWindow(PublishSetting::SCREEN_WIDTH, PublishSetting::SCREEN_HEIGHT, PublishSetting::GAME_TITLE);
+
     Engine *engine = new Engine();
     engine->Initialize();
 
     UserMain *user = new UserMain();
     user->OnStart(engine->cmd);
-
-    InitWindow(PublishSetting::SCREEN_WIDTH, PublishSetting::SCREEN_HEIGHT, PublishSetting::GAME_TITLE);
 
     while (!WindowShouldClose()) {
 

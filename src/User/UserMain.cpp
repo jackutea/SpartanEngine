@@ -34,7 +34,7 @@ void UserMain::OnFixLogicUpdate(EngineCommand* cmd, float fixdt) {
 }
 
 void UserMain::OnReadyDraw(EngineCommand* cmd) {
-    cmd->RP_Sky_SetSolid(RAYWHITE);
+    cmd->RP_Sky_SetSolid({17, 17, 17, 255});
 }
 
 void UserMain::OnQuit() {

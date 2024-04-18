@@ -10,4 +10,13 @@ public:
 public:
     AssetManager();
     ~AssetManager();
+    
+    ModelAsset *LoadModel(const char *path);
+    ModelAsset *GetModel(int id);
+
+    TextureAsset *LoadTexture(const char *path);
+    TextureAsset *GetTexture(int id);
+
+    ShaderAsset *LoadShader(const char *vsPath, const char *fsPath);
+    ShaderAsset *GetShader(int id);
 };

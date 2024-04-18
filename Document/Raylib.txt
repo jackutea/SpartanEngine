@@ -1,0 +1,2 @@
+- font: .ttf
+- 3DModel: .obj
