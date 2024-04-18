@@ -2,6 +2,7 @@
 
 #include "import.h"
 #include "UserContext.h"
+#include "PublishSetting.h"
 
 class UserMain {
 public:
@@ -10,12 +11,12 @@ public:
 public:
     UserMain();
     ~UserMain();
-    void OnStart();
-    void OnLogicUpdate(float dt);
-    void OnReadyDraw();
+    void OnStart(EngineCommand* cmd);
+    void OnLogicUpdate(EngineCommand* cmd, float dt);
+    void OnReadyDraw(EngineCommand* cmd);
     void OnQuit();
 
 protected:
-    float restTime;
-    void OnFixLogicUpdate(float fixdt);
+    float restFixTime;
+    void OnFixLogicUpdate(EngineCommand* cmd, float fixdt);
 };

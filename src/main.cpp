@@ -1,6 +1,5 @@
 #include "define.h"
-#include "PublishSetting.h"
-#include "Engine/export.h"
+#include "Engine/Engine.h"
 #include "User/UserMain.h"
 
 int main() {
@@ -9,7 +8,7 @@ int main() {
     engine->LoadBuiltInAssets();
 
     UserMain *user = new UserMain();
-    user->OnStart();
+    user->OnStart(engine->cmd);
 
     InitWindow(PublishSetting::SCREEN_WIDTH, PublishSetting::SCREEN_HEIGHT, PublishSetting::GAME_TITLE);
 
@@ -19,14 +18,14 @@ int main() {
 
         {
             // User Logic
-            user->OnLogicUpdate(dt);
+            user->OnLogicUpdate(engine->cmd, dt);
         }
 
         {
             BeginDrawing();
 
             // Ready to draw
-            user->OnReadyDraw();
+            user->OnReadyDraw(engine->cmd);
 
             // Draw
             engine->Render();
