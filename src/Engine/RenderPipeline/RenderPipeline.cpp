@@ -4,16 +4,20 @@ RenderPipeline::RenderPipeline() {
     ctx = new RenderPipelineContext();
 }
 
+RenderPipeline::~RenderPipeline() {
+    delete ctx;
+}
+
 void RenderPipeline::Sky_Render() {
-    auto sky = ctx->sky;
-    if (sky.skyType == RPSkyType::SolidColor) {
+    RPSkyModel* sky = ctx->sky;
+    if (sky->skyType == RPSkyType::SolidColor) {
         // Render solid sky
-        ClearBackground(sky.solidColor);
+        ClearBackground(sky->solidColor);
     }
 }
 
 void RenderPipeline::Sky_SetSolidColor(Color color) {
-    RPSkyModel& sky = ctx->sky;
-    sky.skyType = RPSkyType::SolidColor;
-    sky.solidColor = color;
+    RPSkyModel* sky = ctx->sky;
+    sky->skyType = RPSkyType::SolidColor;
+    sky->solidColor = color;
 }

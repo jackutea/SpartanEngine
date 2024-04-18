@@ -4,5 +4,9 @@
 
 class RenderPipelineContext {
 public:
-    RPSkyModel sky;
+    RPSkyModel* sky;
+
+public:
+    RenderPipelineContext();
+    ~RenderPipelineContext();
 };

@@ -9,6 +9,7 @@ public:
 
 public:
     RenderPipeline();
+    ~RenderPipeline();
     void Sky_Render();
     void Sky_SetSolidColor(Color color);
 };
