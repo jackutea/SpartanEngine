@@ -13,12 +13,12 @@ AccessModifierOffset: -4
 # AllowAllArgumentsOnNextLine: true
 AllowAllConstructorInitializersOnNextLine: false
 # AllowAllParametersOfDeclarationOnNextLine: true
-# AllowShortBlocksOnASingleLine: Never
-AllowShortCaseLabelsOnASingleLine: true
+AllowShortBlocksOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: false
-# AllowShortLambdasOnASingleLine: All
-# AllowShortIfStatementsOnASingleLine: WithoutElse
-# AllowShortLoopsOnASingleLine: true
+AllowShortLambdasOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
 # AlwaysBreakAfterDefinitionReturnType: None
 # AlwaysBreakAfterReturnType: None
 AlwaysBreakBeforeMultilineStrings: false
@@ -90,7 +90,7 @@ IndentWidth: 4
 # IndentWrappedFunctionNames: false
 # JavaScriptQuotes: Leave
 # JavaScriptWrapImports: true
-# KeepEmptyLinesAtTheStartOfBlocks: false
+KeepEmptyLinesAtTheStartOfBlocks: true
 # MacroBlockBegin: ""
 # MacroBlockEnd: ""
 # MaxEmptyLinesToKeep: 1
@@ -148,7 +148,7 @@ SortUsingDeclarations: false
 # SpaceBeforeInheritanceColon: true
 # SpaceBeforeParens: ControlStatements
 # SpaceBeforeRangeBasedForLoopColon: true
-# SpaceInEmptyBlock: false
+SpaceInEmptyBlock: true
 # SpaceInEmptyParentheses: false
 SpacesBeforeTrailingComments: 1
 # SpacesInAngles: false
