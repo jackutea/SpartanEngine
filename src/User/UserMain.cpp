@@ -1,28 +1,39 @@
 #include "UserMain.h"
 
 UserMain::UserMain() {
-    this->restTime = 0;
+    ctx = new UserContext();
+    restTime = 0;
+}
+
+UserMain::~UserMain() {
+    delete ctx;
 }
 
 void UserMain::OnStart() {
 }
 
 void UserMain::OnLogicUpdate(float dt) {
-    this->restTime += dt;
+    restTime += dt;
 
+    // 1. Process Input
+
+    // 2. Logic Tick
     const float fixInterval = 0.01f;
-    if (this->restTime < fixInterval) {
-        this->OnFixLogicUpdate(this->restTime);
-        this->restTime = 0;
+    if (restTime < fixInterval) {
+        OnFixLogicUpdate(restTime);
+        restTime = 0;
     } else {
-        while (this->restTime >= fixInterval) {
-            this->OnFixLogicUpdate(fixInterval);
-            this->restTime -= fixInterval;
+        while (restTime >= fixInterval) {
+            OnFixLogicUpdate(fixInterval);
+            restTime -= fixInterval;
         }
     }
 }
 
 void UserMain::OnFixLogicUpdate(float fixdt) {
+}
+
+void UserMain::OnReadyDraw() {
 }
 
 void UserMain::OnQuit() {

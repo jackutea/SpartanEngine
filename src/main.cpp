@@ -1,25 +1,38 @@
-#include <iostream>
-#include "User/UserMain.h"
 #include "define.h"
-
-using namespace std::string_literals;
-auto TITLE = u8"你, World!";
+#include "PublishSetting.h"
+#include "Engine/export.h"
+#include "User/UserMain.h"
 
 int main() {
+
+    Engine *engine = new Engine();
+    engine->LoadBuiltInAssets();
 
     UserMain *user = new UserMain();
     user->OnStart();
 
-    InitWindow(800, 450, TITLE);
+    InitWindow(PublishSetting::SCREEN_WIDTH, PublishSetting::SCREEN_HEIGHT, PublishSetting::GAME_TITLE);
 
     while (!WindowShouldClose()) {
 
         float dt = GetFrameTime();
-        user->OnLogicUpdate(dt);
 
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
-        EndDrawing();
+        {
+            // User Logic
+            user->OnLogicUpdate(dt);
+        }
+
+        {
+            BeginDrawing();
+
+            // Ready to draw
+            user->OnReadyDraw();
+
+            // Draw
+            engine->Render();
+
+            EndDrawing();
+        }
     }
 
     CloseWindow();
@@ -27,6 +40,7 @@ int main() {
     user->OnQuit();
 
     delete user;
+    delete engine;
 
     return 0;
 }
