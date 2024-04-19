@@ -13,7 +13,7 @@ Engine::~Engine() {
 
 void Engine::Initialize() {
     // Load built-in assets
-    ctx->assetManager->LoadModel("assets/built_in/models/watermill.obj");
+    ctx->assetManager->LoadModel("assets/built_in/models/cube.obj");
     // ctx->assetManager->LoadModel("assets/built_in/models/model_cube.fbx");
     // ctx->assetManager->LoadTexture("assets/built_in/textures/tex_white.png");
     ctx->assetManager->LoadTexture("assets/built_in/models/watermill_diffuse.png");

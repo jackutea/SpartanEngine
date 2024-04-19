@@ -8,7 +8,7 @@ RenderPipeline::~RenderPipeline() {
     delete ctx;
 }
 
-void RenderPipeline::Sky_Render() {
+void RenderPipeline::Sky_Render() const {
     RPSkyModel* sky = ctx->sky;
     if (sky->skyType == RPSkyType::SolidColor) {
         // Render solid sky

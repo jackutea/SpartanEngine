@@ -15,6 +15,8 @@ void UserMain::OnStart(EngineCommand* cmd) {
 void UserMain::OnLogicUpdate(EngineCommand* cmd, float dt) {
 
     // 1. Process Input
+    CameraModel& cam = cmd->GetMainCamera();
+    cam.Rotate({10 * dt, 1 * dt, 0});
 
     // 2. Logic Tick
     float fixInterval = PublishSetting::FIXED_TIME_STEP;

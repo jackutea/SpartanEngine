@@ -5,10 +5,12 @@
 class CameraManager {
 public:
     CameraManagerContext* ctx;
+
 public:
     CameraManager();
     ~CameraManager();
     void Initialize();
-    void Begin();
-    void End();
+    CameraModel& GetMainCamera() const;
+    void Begin() const;
+    void End() const;
 };

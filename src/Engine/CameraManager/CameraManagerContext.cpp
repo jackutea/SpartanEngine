@@ -1,12 +1,23 @@
 #include "CameraManagerContext.h"
 
 CameraManagerContext::CameraManagerContext() {
-    type = CameraType::Camera3D;
-    cam3D = new Camera3D();
-    cam2D = new Camera2D();
+
+    CameraModel *defaultCamera = new CameraModel();
+    defaultCamera->id = cameraIDRecord++;
+
+    cameras = new unordered_map<int, CameraModel *>();
+    cameras->insert({defaultCamera->id, defaultCamera});
+
+    mainCameraID = defaultCamera->id;
 }
 
 CameraManagerContext::~CameraManagerContext() {
-    delete cam3D;
-    delete cam2D;
+    for (auto it = cameras->begin(); it != cameras->end(); it++) {
+        delete it->second;
+    }
+    delete cameras;
+}
+
+CameraModel &CameraManagerContext::GetMainCamera() const {
+    return *cameras->at(mainCameraID);
 }

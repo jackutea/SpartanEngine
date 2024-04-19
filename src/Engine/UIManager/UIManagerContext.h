@@ -4,6 +4,6 @@
 
 class UIManagerContext {
 public:
-    UIManagerContext() {
-    }
+    UIManagerContext();
+    ~UIManagerContext();
 };

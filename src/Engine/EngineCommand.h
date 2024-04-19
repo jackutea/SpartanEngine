@@ -1,14 +1,18 @@
 #pragma once
 
-#include "../../include/raylib.h"
+#include "EngineContext.h"
 
 class EngineCommand {
 private:
-    void* ctxPtr;
+    EngineContext* ctx;
 
 public:
-    EngineCommand(void* ctx);
+    EngineCommand(EngineContext* ctx);
     ~EngineCommand();
 
+    // ==== Camera ====
+    CameraModel& GetMainCamera() const;
+
+    // ==== RP ====
     void RP_Sky_SetSolid(Color color);
 };

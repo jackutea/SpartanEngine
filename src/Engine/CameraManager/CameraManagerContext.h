@@ -1,14 +1,17 @@
 #pragma once
 
 #include "import.h"
+#include <unordered_map>
+using namespace std;
 
 class CameraManagerContext {
 public:
-    CameraType type;
-    Camera3D *cam3D;
-    Camera2D *cam2D;
+    int mainCameraID;
+    int cameraIDRecord;
+    unordered_map<int, CameraModel *> *cameras;
 
 public:
     CameraManagerContext();
     ~CameraManagerContext();
+    CameraModel& GetMainCamera() const;
 };
