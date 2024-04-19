@@ -35,6 +35,7 @@ void UserMain::OnLogicUpdate(EngineCommand* cmd, float dt) {
 void UserMain::OnFixLogicUpdate(EngineCommand* cmd, float fixdt) {
 }
 
+// 仅设置, 没绘制
 void UserMain::OnReadyDraw(EngineCommand* cmd) {
     cmd->RP_Sky_SetSolid({17, 17, 17, 255});
 }
