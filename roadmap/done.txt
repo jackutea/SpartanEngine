@@ -1,0 +1,4 @@
+==== Build ====
+- Auto Build
+    - Collecting .cpp
+    - Link .o .dll

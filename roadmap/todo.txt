@@ -1,7 +1,4 @@
 ==== Build ====
-- Auto Build
-    - Collecting .cpp
-    - Link .o .dll
 
 ==== Runtime ====
 - Lifecycle
@@ -27,5 +24,7 @@
 - Input System
 - Audio System
 - Serialization
+- Performance
+    - Pool
 
 ==== Editor ====

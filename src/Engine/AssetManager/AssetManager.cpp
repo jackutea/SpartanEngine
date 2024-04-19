@@ -25,6 +25,16 @@ ModelAsset *AssetManager::GetModel(unsigned int id) {
     return ctx->models->at(id);
 }
 
+void AssetManager::UnloadModel(unsigned int id) {
+    if (ctx->models->count(id) == 0) {
+        SLog("Model not found: %d\r\n", id);
+        return;
+    }
+    ModelAsset *model = ctx->models->at(id);
+    delete model;
+    ctx->models->erase(id);
+}
+
 // ==== Texture ====
 TextureAsset *AssetManager::LoadTexture(const char *path) {
     TextureAsset *texture = new TextureAsset();
@@ -42,6 +52,16 @@ TextureAsset *AssetManager::GetTexture(unsigned int id) {
     return ctx->textures->at(id);
 }
 
+void AssetManager::UnloadTexture(unsigned int id) {
+    if (ctx->textures->count(id) == 0) {
+        SLog("Texture not found: %d", id);
+        return;
+    }
+    TextureAsset *texture = ctx->textures->at(id);
+    delete texture;
+    ctx->textures->erase(id);
+}
+
 // ==== Shader ====
 ShaderAsset *AssetManager::LoadShader(const char *vsPath, const char *fsPath) {
     ShaderAsset *shader = new ShaderAsset();
@@ -56,4 +76,14 @@ ShaderAsset *AssetManager::GetShader(unsigned int id) {
         return nullptr;
     }
     return ctx->shaders->at(id);
+}
+
+void AssetManager::UnloadShader(unsigned int id) {
+    if (ctx->shaders->count(id) == 0) {
+        SLog("Shader not found: %d\r\n", id);
+        return;
+    }
+    ShaderAsset *shader = ctx->shaders->at(id);
+    delete shader;
+    ctx->shaders->erase(id);
 }
