@@ -2,7 +2,6 @@
 #include <iostream>
 
 TextureAsset::TextureAsset() {
-    id = 0;
 }
 
 TextureAsset::~TextureAsset() {
@@ -11,10 +10,14 @@ TextureAsset::~TextureAsset() {
     }
 }
 
+unsigned int TextureAsset::GetID() {
+    return texture.id;
+}
+
 void TextureAsset::Load(const char *path) {
     try {
         texture = LoadTexture(path);
     } catch (...) {
-        std::cout << "Loaded texture: " << path << std::endl;
+        std::cerr << "Loaded texture: " << path << std::endl;
     }
 }

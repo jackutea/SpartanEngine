@@ -12,11 +12,11 @@ public:
     ~AssetManager();
     
     ModelAsset *LoadModel(const char *path);
-    ModelAsset *GetModel(int id);
+    ModelAsset *GetModel(unsigned int id);
 
     TextureAsset *LoadTexture(const char *path);
-    TextureAsset *GetTexture(int id);
+    TextureAsset *GetTexture(unsigned int id);
 
     ShaderAsset *LoadShader(const char *vsPath, const char *fsPath);
-    ShaderAsset *GetShader(int id);
+    ShaderAsset *GetShader(unsigned int id);
 };

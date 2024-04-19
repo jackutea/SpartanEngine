@@ -1,6 +1,5 @@
 #pragma once
 
-#include "AssetManager/AssetManager.h"
 #include "EngineContext.h"
 #include "EngineCommand.h"
 

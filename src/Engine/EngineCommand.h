@@ -15,4 +15,6 @@ public:
 
     // ==== RP ====
     void RP_Sky_SetSolid(Color color);
+    void RP_Model_Add(ModelAsset* model, Matrix transform);
+
 };

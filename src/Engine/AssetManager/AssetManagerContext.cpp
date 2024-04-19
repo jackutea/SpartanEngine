@@ -2,13 +2,13 @@
 
 AssetManagerContext::AssetManagerContext() {
     modelIDRecord = 0;
-    models = new unordered_map<int, ModelAsset *>();
+    models = new unordered_map<unsigned int, ModelAsset *>(100);
 
     textureIDRecord = 0;
-    textures = new unordered_map<int, TextureAsset *>();
+    textures = new unordered_map<unsigned int, TextureAsset *>(100);
 
     shaderIDRecord = 0;
-    shaders = new unordered_map<int, ShaderAsset *>();
+    shaders = new unordered_map<unsigned int, ShaderAsset *>(100);
 }
 
 AssetManagerContext::~AssetManagerContext() {

@@ -9,12 +9,19 @@ ModelAsset::~ModelAsset() {
     }
 }
 
+unsigned int ModelAsset::GetID() {
+    return id;
+}
+
 void ModelAsset::Load(const char *path) {
     model = LoadModel(path);
 }
 
-void ModelAsset::Draw(Vector3 pos, Vector3 rotateAxis, float angle, Vector3 scale) {
-    DrawModelEx(model, pos, rotateAxis, angle, scale, WHITE);
+void ModelAsset::Draw() {
+    float angle;
+    Vector3 axis;
+    QuaternionToAxisAngle(tf.rotation, &axis, &angle);
+    DrawModelEx(model, tf.translation, axis, angle, tf.scale, WHITE);
 }
 
 void ModelAsset::SetTexture(int matIndex, int texIndex, Texture2D texture) {

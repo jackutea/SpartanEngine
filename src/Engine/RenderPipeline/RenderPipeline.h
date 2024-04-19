@@ -12,4 +12,6 @@ public:
     ~RenderPipeline();
     void Sky_Render() const;
     void Sky_SetSolidColor(Color color);
+    void Model_Add(ModelAsset* model, Matrix transform);
+    void Model_Render() const;
 };

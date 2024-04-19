@@ -4,14 +4,16 @@
 
 class ModelAsset {
 public:
-    int id;
+    unsigned int id;
+    Transform tf;
     Model model;
 
 public:
     ModelAsset();
     ~ModelAsset();
+    unsigned int GetID();
     void Load(const char *path);
-    void Draw(Vector3 pos, Vector3 rotateAxis, float angle, Vector3 scale);
+    void Draw();
     void SetTexture(int matIndex, int texIndex, Texture2D texture);
     void SetShader(int matIndex, Shader shader);
 };

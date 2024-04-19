@@ -4,11 +4,12 @@
 
 class TextureAsset {
 public:
-    int id;
+    unsigned int id;
     Texture texture;
 
 public:
     TextureAsset();
     ~TextureAsset();
+    unsigned int GetID();
     void Load(const char *path);
 };

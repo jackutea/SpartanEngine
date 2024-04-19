@@ -17,7 +17,11 @@ ModelAsset *AssetManager::LoadModel(const char *path) {
     return model;
 }
 
-ModelAsset *AssetManager::GetModel(int id) {
+ModelAsset *AssetManager::GetModel(unsigned int id) {
+    if (ctx->models->count(id) == 0) {
+        SLog("Model not found: %d\r\n", id);
+        return nullptr;
+    }
     return ctx->models->at(id);
 }
 
@@ -30,19 +34,26 @@ TextureAsset *AssetManager::LoadTexture(const char *path) {
     return texture;
 }
 
-TextureAsset *AssetManager::GetTexture(int id) {
+TextureAsset *AssetManager::GetTexture(unsigned int id) {
+    if (ctx->textures->count(id) == 0) {
+        SLog("Texture not found: %d", id);
+        return nullptr;
+    }
     return ctx->textures->at(id);
 }
 
 // ==== Shader ====
 ShaderAsset *AssetManager::LoadShader(const char *vsPath, const char *fsPath) {
     ShaderAsset *shader = new ShaderAsset();
-    shader->id = ctx->shaderIDRecord++;
     shader->Load(vsPath, fsPath);
-    ctx->shaders->insert({shader->id, shader});
+    ctx->shaders->insert({shader->shader.id, shader});
     return shader;
 }
 
-ShaderAsset *AssetManager::GetShader(int id) {
+ShaderAsset *AssetManager::GetShader(unsigned int id) {
+    if (ctx->shaders->count(id) == 0) {
+        SLog("Shader not found: %d\r\n", id);
+        return nullptr;
+    }
     return ctx->shaders->at(id);
 }

@@ -34,16 +34,11 @@ void Engine::Render() {
     ctx->cameraManager->Begin();
 
     // Render Skybox
-    ctx->rp->Sky_Render();
+    RenderPipeline *rp = ctx->rp;
+    rp->Sky_Render();
 
     // Render Models
-    // DrawCubeWiresV((Vector3){0, 0, 0}, (Vector3){20, 20, 20}, RED);
-    TextureAsset *tex = ctx->assetManager->GetTexture(0);
-    ModelAsset *model= ctx->assetManager->GetModel(0);
-    ShaderAsset *shader = ctx->assetManager->GetShader(0);
-    model->SetTexture(0, 0, tex->texture);
-    model->SetShader(0, shader->shader);
-    model->Draw((Vector3){0, 0, 0}, (Vector3){0, 1, 0}, 45, (Vector3){5, 5, 5});
+    rp->Model_Render();
 
     // ] Camera Mode End
     ctx->cameraManager->End();

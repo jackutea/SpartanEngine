@@ -4,11 +4,12 @@
 
 class ShaderAsset {
 public:
-    int id;
+    unsigned int id;
     Shader shader;
 
 public:
     ShaderAsset();
     ~ShaderAsset();
+    unsigned int GetID();
     void Load(const char *vsPath, const char *fsPath);
 };

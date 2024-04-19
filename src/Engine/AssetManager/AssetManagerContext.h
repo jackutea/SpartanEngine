@@ -3,20 +3,18 @@
 #include <vector>
 #include <unordered_map>
 #include "import.h"
-#include "Models/export.h"
+#include "../Models/export.h"
 
 using namespace std;
 
 class AssetManagerContext {
 public:
-    int modelIDRecord;
-    unordered_map<int, ModelAsset *> *models;
-
-    int textureIDRecord;
-    unordered_map<int, TextureAsset *> *textures;
-
-    int shaderIDRecord;
-    unordered_map<int, ShaderAsset *> *shaders;
+    unsigned int modelIDRecord;
+    unordered_map<unsigned int, ModelAsset *> *models;
+    unsigned int textureIDRecord;
+    unordered_map<unsigned int, TextureAsset *> *textures;
+    unsigned int shaderIDRecord;
+    unordered_map<unsigned int, ShaderAsset *> *shaders;
 
 public:
     AssetManagerContext();
