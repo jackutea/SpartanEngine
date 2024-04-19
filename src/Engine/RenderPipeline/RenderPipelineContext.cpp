@@ -4,7 +4,7 @@ class ModelAsset;
 
 RenderPipelineContext::RenderPipelineContext() {
     sky = new SkyRenderer();
-    models = new std::vector<ModelAsset *>(100);
+    models = new std::vector<ModelAsset *>();
 }
 
 RenderPipelineContext::~RenderPipelineContext() {
