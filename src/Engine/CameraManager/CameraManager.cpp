@@ -10,7 +10,8 @@ CameraManager::~CameraManager() {
 
 void CameraManager::Initialize() {
     Camera3D *cam3D = &ctx->GetMainCamera()->cam3D;
-    cam3D->position = {0.0f, 0.0f, -200.0f};
+    cam3D->position = {0.0f, 0.0f, -10.0f};
+    cam3D->target = {0.0f, 0.0f, 0.0f};
 }
 
 CameraModel *CameraManager::GetMainCamera() {

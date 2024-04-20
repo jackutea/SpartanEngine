@@ -27,7 +27,9 @@ void UserMain::OnLogicUpdate(EngineCommand* cmd, float dt) {
 
     // 1. Process Input
     CameraModel* cam = cmd->GetMainCamera();
-    cam->Rotate({10 * dt, 1 * dt, 0});
+    // cam->Rotate({1 * dt, 1 * dt, 0});
+    float off = (float)sin(GetTime()) * 2;
+    cam->MoveTo({off, 0, 0});
 
     // 2. Logic Tick
     float fixInterval = PublishSetting::FIXED_TIME_STEP;
