@@ -16,6 +16,9 @@ void Engine::Initialize() {
 
     // Camera
     ctx->cameraManager->Initialize();
+
+    // RP
+    ctx->rp->Initialize();
 }
 
 void Engine::LogicTick(float dt) {
@@ -29,11 +32,9 @@ void Engine::Render() {
     ctx->cameraManager->Begin();
 
     // Render Skybox
+    CameraModel* mainCam = ctx->cameraManager->GetMainCamera();
     RenderPipeline *rp = ctx->rp;
-    rp->Sky_Render();
-
-    // Render Models
-    rp->Model_Render();
+    rp->RenderAll(*mainCam);
 
     // ] Camera Mode End
     ctx->cameraManager->End();

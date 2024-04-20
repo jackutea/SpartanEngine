@@ -21,6 +21,10 @@ CameraModel* EngineCommand::GetMainCamera() {
 }
 
 // ==== RP ====
+LightRenderer* EngineCommand::RP_GetMainLight() {
+    return ctx->rp->GetMainLight();
+}
+
 void EngineCommand::RP_Sky_SetSolid(Color color) {
     ctx->rp->Sky_SetSolidColor(color);
 }

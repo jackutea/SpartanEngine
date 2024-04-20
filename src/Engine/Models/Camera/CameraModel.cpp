@@ -24,6 +24,26 @@ CameraModel::~CameraModel() {
 void CameraModel::Initialize() {
 }
 
+Vector3 CameraModel::GetPosition() {
+    if (type == CameraType::Camera3D) {
+        return cam3D.position;
+    } else if (type == CameraType::Camera2D) {
+        return (Vector3){cam2D.offset.x, cam2D.offset.y, 0.0f};
+    } else {
+        throw "Invalid CameraType";
+    }
+}
+
+Vector3 CameraModel::GetTarget() {
+    if (type == CameraType::Camera3D) {
+        return cam3D.target;
+    } else if (type == CameraType::Camera2D) {
+        return (Vector3){cam2D.target.x, cam2D.target.y, 0.0f};
+    } else {
+        throw "Invalid CameraType";
+    }
+}
+
 void CameraModel::Move(Vector3 offset) {
     if (type == CameraType::Camera3D) {
         cam3D.target = Vector3Add(cam3D.target, offset);

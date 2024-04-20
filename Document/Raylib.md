@@ -25,3 +25,18 @@
 #define RL_DEFAULT_SHADER_SAMPLER2D_NAME_TEXTURE1  "texture1"          // texture1 (texture slot active 1)
 #define RL_DEFAULT_SHADER_SAMPLER2D_NAME_TEXTURE2  "texture2"          // texture2 (texture slot active 2)
 ```
+
+``` c
+// SpartanEngine
+struct Light {
+    int enabled;
+    int type;
+    vec3 position;
+    vec3 target;
+    vec4 color;
+};
+uniform Light lights[MAX_LIGHTS];
+
+uniform vec3 viewPos
+
+```

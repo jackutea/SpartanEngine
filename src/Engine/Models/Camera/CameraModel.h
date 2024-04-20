@@ -13,6 +13,8 @@ public:
     CameraModel();
     ~CameraModel();
     void Initialize();
+    Vector3 GetPosition();
+    Vector3 GetTarget();
     void Move(Vector3 offset);
     void MoveTo(Vector3 target);
     void Rotate(Vector3 offset);

@@ -7,3 +7,4 @@
 #include "Camera/CameraModel.h"
 
 #include "RP/SkyRenderer.h"
+#include "RP/LightRenderer.h"

@@ -10,8 +10,14 @@ public:
 public:
     RenderPipeline();
     ~RenderPipeline();
-    void Sky_Render() const;
+    void Initialize();
+    void RenderAll(CameraModel& cam);
+
+    LightRenderer* GetMainLight();
     void Sky_SetSolidColor(Color color);
-    void Model_Add(ModelAsset* model);
-    void Model_Render();
+    void Model_Add(ModelAsset *model);
+    
+protected:
+    void Sky_Render(CameraModel& cam) const;
+    void Model_Render(CameraModel& cam);
 };

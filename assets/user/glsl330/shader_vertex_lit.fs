@@ -9,6 +9,17 @@ in vec3 fragNormal;
 // Output fragment color
 out vec4 finalColor;
 
+#define MAX_LIGHTS 4
+
+struct Light {
+    int enabled;
+    int type;
+    vec3 position;
+    vec3 target;
+    vec4 color;
+};
+uniform Light lights[MAX_LIGHTS];
+
 // NOTE: Add here your custom variables
 
 void main()
@@ -19,6 +30,7 @@ void main()
     // // NOTE: Implement here your fragment shader code
 
     // finalColor = texelColor*colDiffuse;
-    finalColor = vec4(fragTexCoord, 1.0, 1.0);
+    vec3 lightNormal = normalize(lights[0].position - lights[0].target);
+    finalColor = vec4(lightNormal, 1.0);
 }
 

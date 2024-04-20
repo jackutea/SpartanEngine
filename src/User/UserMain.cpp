@@ -14,6 +14,9 @@ void UserMain::OnStart(EngineCommand* cmd) {
     auto model = asset->LoadModel("assets/built_in/models/mesh_sphere.glb");
     auto tex = asset->LoadTexture("assets/built_in/textures/tex_white.png");
     auto sha = asset->LoadShader("assets/user/glsl330/shader_vertex_lit.vs", "assets/user/glsl330/shader_vertex_lit.fs");
+    auto light = cmd->RP_GetMainLight();
+    light->SetupShader(sha->shader);
+    light->UpdateShader(sha->shader);
 
     model->SetTexture(0, MATERIAL_MAP_DIFFUSE, tex->texture);
     model->SetShader(0, sha->shader);
