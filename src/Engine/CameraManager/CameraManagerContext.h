@@ -13,5 +13,5 @@ public:
 public:
     CameraManagerContext();
     ~CameraManagerContext();
-    CameraModel& GetMainCamera() const;
+    CameraModel* GetMainCamera();
 };

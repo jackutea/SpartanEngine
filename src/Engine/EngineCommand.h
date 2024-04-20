@@ -10,11 +10,14 @@ public:
     EngineCommand(EngineContext* ctx);
     ~EngineCommand();
 
+    // ==== Asset ====
+    AssetManager* GetAssetManager();
+
     // ==== Camera ====
-    CameraModel& GetMainCamera() const;
+    CameraModel* GetMainCamera();
 
     // ==== RP ====
     void RP_Sky_SetSolid(Color color);
-    void RP_Model_Add(ModelAsset* model, Matrix transform);
+    void RP_Model_Add(ModelAsset* model);
 
 };

@@ -24,13 +24,15 @@ void RenderPipeline::Sky_SetSolidColor(Color color) {
 }
 
 // ==== Model ====
-void RenderPipeline::Model_Add(ModelAsset* model, Matrix transform) {
+void RenderPipeline::Model_Add(ModelAsset* model) {
     ctx->models->push_back(model);
 }
 
-void RenderPipeline::Model_Render() const {
-    for (ModelAsset* model : *ctx->models) {
-        // Render model
+void RenderPipeline::Model_Render() {
+    for (int i = ctx->models->size() - 1; i >= 0; i--) {
+        ModelAsset* model = ctx->models->at(i);
         model->Draw();
+        // ctx->models->pop_back();
     }
+    ctx->models->clear();
 }

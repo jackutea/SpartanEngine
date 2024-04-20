@@ -13,11 +13,6 @@ Engine::~Engine() {
 
 void Engine::Initialize() {
     // Load built-in assets
-    ctx->assetManager->LoadModel("assets/built_in/models/mesh_sphere.glb");
-    // ctx->assetManager->LoadModel("assets/built_in/models/model_cube.fbx");
-    // ctx->assetManager->LoadTexture("assets/built_in/textures/tex_white.png");
-    ctx->assetManager->LoadTexture("assets/built_in/models/watermill_diffuse.png");
-    ctx->assetManager->LoadShader(0, "assets/built_in/shaders/glsl330/grayscale.fs");
 
     // Camera
     ctx->cameraManager->Initialize();

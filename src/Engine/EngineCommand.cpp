@@ -10,10 +10,21 @@ EngineCommand::~EngineCommand() {
     delete ctx;
 }
 
-CameraModel& EngineCommand::GetMainCamera() const {
+// ==== Asset ====
+AssetManager* EngineCommand::GetAssetManager() {
+    return ctx->assetManager;
+}
+
+// ==== Camera ====
+CameraModel* EngineCommand::GetMainCamera() {
     return ctx->cameraManager->GetMainCamera();
 }
 
+// ==== RP ====
 void EngineCommand::RP_Sky_SetSolid(Color color) {
     ctx->rp->Sky_SetSolidColor(color);
+}
+
+void EngineCommand::RP_Model_Add(ModelAsset* model) {
+    ctx->rp->Model_Add(model);
 }

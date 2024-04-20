@@ -6,6 +6,8 @@ int main() {
 
     InitWindow(PublishSetting::SCREEN_WIDTH, PublishSetting::SCREEN_HEIGHT, PublishSetting::GAME_TITLE);
 
+    SetTraceLogLevel(LOG_WARNING);
+
     Engine *engine = new Engine();
     engine->Initialize();
 
@@ -19,12 +21,12 @@ int main() {
         {
             // Engine Logic
             engine->LogicTick(dt);
-            
+
             // User Logic
             user->OnLogicUpdate(engine->cmd, dt);
         }
 
-        {
+        try {
             BeginDrawing();
 
             // Ready to draw
@@ -37,6 +39,8 @@ int main() {
             engine->ProcessAndRenderUI();
 
             EndDrawing();
+        } catch (...) {
+            TraceLog(LOG_ERROR, "An error occurred in the main loop.");
         }
     }
 

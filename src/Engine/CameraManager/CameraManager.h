@@ -10,7 +10,7 @@ public:
     CameraManager();
     ~CameraManager();
     void Initialize();
-    CameraModel& GetMainCamera() const;
+    CameraModel* GetMainCamera();
     void Begin() const;
     void End() const;
 };

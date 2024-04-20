@@ -18,6 +18,6 @@ CameraManagerContext::~CameraManagerContext() {
     delete cameras;
 }
 
-CameraModel &CameraManagerContext::GetMainCamera() const {
-    return *cameras->at(mainCameraID);
+CameraModel *CameraManagerContext::GetMainCamera() {
+    return cameras->at(mainCameraID);
 }

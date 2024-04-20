@@ -16,4 +16,5 @@ public:
     void Draw();
     void SetTexture(int matIndex, int texIndex, Texture2D texture);
     void SetShader(int matIndex, Shader shader);
+    void Log();
 };

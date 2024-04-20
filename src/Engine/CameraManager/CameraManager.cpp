@@ -9,18 +9,18 @@ CameraManager::~CameraManager() {
 }
 
 void CameraManager::Initialize() {
-    Camera3D *cam3D = &ctx->GetMainCamera().cam3D;
+    Camera3D *cam3D = &ctx->GetMainCamera()->cam3D;
     cam3D->position = {0.0f, 0.0f, -200.0f};
 }
 
-CameraModel &CameraManager::GetMainCamera() const {
+CameraModel *CameraManager::GetMainCamera() {
     return ctx->GetMainCamera();
 }
 
 void CameraManager::Begin() const {
-    ctx->GetMainCamera().Begin();
+    ctx->GetMainCamera()->Begin();
 }
 
 void CameraManager::End() const {
-    ctx->GetMainCamera().End();
+    ctx->GetMainCamera()->End();
 }
