@@ -4,24 +4,20 @@ class ModelAsset;
 
 RenderPipelineContext::RenderPipelineContext() {
     sky = new SkyRenderer();
-    lights = new std::unordered_map<int, LightRenderer *>();
+    lights = new std::vector<LightRenderer *>();
     models = new std::vector<ModelAsset *>();
 }
 
 RenderPipelineContext::~RenderPipelineContext() {
     delete sky;
 
-    for (auto &light : *lights) {
-        delete light.second;
+    for (auto light : *lights) {
+        delete light;
     }
     delete lights;
 
     // Just Model Queue, Model Asset will be deleted by AssetManager
     delete models;
-}
-
-void RenderPipelineContext::Inject(AssetManagerContext *assetManagerCtx) {
-    this->assetManagerCtx = assetManagerCtx;
 }
 
 LightRenderer *RenderPipelineContext::GetMainLight() {

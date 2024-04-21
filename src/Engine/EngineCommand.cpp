@@ -2,33 +2,40 @@
 #include "EngineCommand.h"
 #include "RenderPipeline/RenderPipeline.h"
 
-EngineCommand::EngineCommand(EngineContext* ctx) {
-    this->ctx = ctx;
+EngineCommand::EngineCommand() {
 }
 
 EngineCommand::~EngineCommand() {
-    delete ctx;
+    delete engine;
+}
+
+void EngineCommand::Inject(Engine* engine) {
+    this->engine = engine;
 }
 
 // ==== Asset ====
 AssetManager* EngineCommand::GetAssetManager() {
-    return ctx->assetManager;
+    return engine->ctx->assetManager;
+}
+
+ShaderAsset* EngineCommand::LoadShader(const char* name, const char* vsPath, const char* fsPath) {
+    return engine->Shader_Load(name, vsPath, fsPath);
 }
 
 // ==== Camera ====
 CameraModel* EngineCommand::GetMainCamera() {
-    return ctx->cameraManager->GetMainCamera();
+    return engine->ctx->cameraManager->GetMainCamera();
 }
 
 // ==== RP ====
 LightRenderer* EngineCommand::RP_GetMainLight() {
-    return ctx->rp->GetMainLight();
+    return engine->ctx->rp->GetMainLight();
 }
 
 void EngineCommand::RP_Sky_SetSolid(Color color) {
-    ctx->rp->Sky_SetSolidColor(color);
+    engine->ctx->rp->Sky_SetSolidColor(color);
 }
 
 void EngineCommand::RP_Model_Add(ModelAsset* model) {
-    ctx->rp->Model_Add(model);
+    engine->ctx->rp->Model_Add(model);
 }

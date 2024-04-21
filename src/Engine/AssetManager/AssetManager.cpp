@@ -66,9 +66,9 @@ void AssetManager::UnloadTexture(unsigned int id) {
 }
 
 // ==== Shader ====
-ShaderAsset *AssetManager::LoadShader(const char *vsPath, const char *fsPath) {
+ShaderAsset *AssetManager::LoadShader(const char *name, const char *vsPath, const char *fsPath) {
     ShaderAsset *shader = new ShaderAsset();
-    shader->Load(vsPath, fsPath);
+    shader->Load(name, vsPath, fsPath);
     ctx->shaders->insert({shader->shader.id, shader});
     return shader;
 }

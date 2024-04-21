@@ -7,9 +7,26 @@ public:
     unsigned int id;
     Shader shader;
 
+    // Shader locations
+    int lit_enabledLoc;
+    int lit_typeLoc;
+    int lit_positionLoc;
+    int lit_targetLoc;
+    int lit_colorLoc;
+    int lit_attenuationLoc;
+    int lit_countLoc;
+    int viewPosLoc;
+    int ambientLoc;
+
+private:
+    char *name;
+
 public:
     ShaderAsset();
     ~ShaderAsset();
     unsigned int GetID();
-    void Load(const char *vsPath, const char *fsPath);
+    const char *GetName();
+    void Load(const char *name, const char *vsPath, const char *fsPath);
+    void InitLocs(int lightIndex);
+    void SetValue(int locIndex, void *value, int uniformType);
 };

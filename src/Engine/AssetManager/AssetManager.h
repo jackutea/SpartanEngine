@@ -10,7 +10,7 @@ public:
 public:
     AssetManager();
     ~AssetManager();
-    
+
     ModelAsset *LoadModel(const char *path);
     ModelAsset *GetModel(unsigned int id);
     void UnloadModel(unsigned int id);
@@ -19,7 +19,7 @@ public:
     TextureAsset *GetTexture(unsigned int id);
     void UnloadTexture(unsigned int id);
 
-    ShaderAsset *LoadShader(const char *vsPath, const char *fsPath);
+    ShaderAsset *LoadShader(const char *name, const char *vsPath, const char *fsPath);
     ShaderAsset *GetShader(unsigned int id);
     void UnloadShader(unsigned int id);
 };

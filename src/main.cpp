@@ -1,4 +1,5 @@
 #include "define.h"
+#include "Engine/EngineCommand.h"
 #include "Engine/Engine.h"
 #include "User/UserMain.h"
 
@@ -8,11 +9,27 @@ int main() {
 
     SetTraceLogLevel(LOG_WARNING);
 
+    // ==== Ctor ====
+    EngineCommand *cmd = new EngineCommand();
     Engine *engine = new Engine();
-    engine->Initialize();
-
     UserMain *user = new UserMain();
-    user->OnStart(engine->cmd);
+
+    // ==== Inject ====
+    cmd->Inject(engine);
+
+    try {
+
+        // ==== Init ====
+        engine->Initialize();
+
+        // ==== Start ====
+        user->OnStart(cmd);
+
+    } catch (...) {
+        TraceLog(LOG_ERROR, "An error occurred in the initialization.");
+        CloseWindow();
+        return 1;
+    }
 
     while (!WindowShouldClose()) {
 
@@ -23,14 +40,14 @@ int main() {
             engine->LogicTick(dt);
 
             // User Logic
-            user->OnLogicUpdate(engine->cmd, dt);
+            user->OnLogicUpdate(cmd, dt);
         }
 
         try {
             BeginDrawing();
 
             // Ready to draw
-            user->OnReadyDraw(engine->cmd);
+            user->OnReadyDraw(cmd);
 
             // Draw
             engine->Render();

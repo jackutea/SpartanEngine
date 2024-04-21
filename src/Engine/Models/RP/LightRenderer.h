@@ -12,18 +12,7 @@ public:
     Color color;
     float attenuation;
 
-    // Shader locations
-    int enabledLoc;
-    int typeLoc;
-    int positionLoc;
-    int targetLoc;
-    int colorLoc;
-    int attenuationLoc;
-
 public:
     LightRenderer();
     ~LightRenderer();
-
-    void SetupShader(Shader shader);
-    void UpdateShader(Shader shader);
 };

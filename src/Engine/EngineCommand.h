@@ -1,17 +1,20 @@
 #pragma once
 
-#include "EngineContext.h"
+#include "Engine.h"
 
 class EngineCommand {
 private:
-    EngineContext* ctx;
+    Engine* engine;
 
 public:
-    EngineCommand(EngineContext* ctx);
+    EngineCommand();
     ~EngineCommand();
+
+    void Inject(Engine* engine);
 
     // ==== Asset ====
     AssetManager* GetAssetManager();
+    ShaderAsset* LoadShader(const char* name, const char* vsPath, const char* fsPath);
 
     // ==== Camera ====
     CameraModel* GetMainCamera();
@@ -20,5 +23,4 @@ public:
     LightRenderer* RP_GetMainLight();
     void RP_Sky_SetSolid(Color color);
     void RP_Model_Add(ModelAsset* model);
-
 };

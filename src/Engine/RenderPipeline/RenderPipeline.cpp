@@ -11,16 +11,8 @@ RenderPipeline::~RenderPipeline() {
 void RenderPipeline::Initialize() {
 
     // Light
-    LightRenderer* light = new LightRenderer();
-    light->index = 0;
-    light->type = LightType::Directional;
-    light->isEnable = true;
-    light->pos = {0, 0, 0};
-    light->target = {-0.5f, -0.5f, 0};
-    light->color = WHITE;
-    light->attenuation = 0.2f;
-    ctx->mainLightID = 0;
-    ctx->lights->insert({0, light});
+    LightRenderer* light = Light_Create(LightType::Directional);
+    ctx->mainLightID = light->index;
 
     // Sky
     Sky_SetSolidColor(RAYWHITE);
@@ -34,6 +26,19 @@ void RenderPipeline::RenderAll(CameraModel& cam) {
 }
 
 // ==== Light ====
+LightRenderer* RenderPipeline::Light_Create(LightType type) {
+    LightRenderer* light = new LightRenderer();
+    light->index = ctx->lights->size();
+    light->type = type;
+    light->isEnable = true;
+    light->pos = {0, 0, 0};
+    light->target = {0.2f, 0.3f, 0};
+    light->color = WHITE;
+    light->attenuation = 0.2f;
+    ctx->lights->push_back(light);
+    return light;
+}
+
 LightRenderer* RenderPipeline::GetMainLight() {
     return ctx->lights->at(ctx->mainLightID);
 }

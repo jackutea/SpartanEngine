@@ -6,6 +6,7 @@ class SkyRenderer {
 public:
     RPSkyType skyType;
     Color solidColor;
+    Color ambientColor;
 
 public:
     SkyRenderer();
