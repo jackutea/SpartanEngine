@@ -14,7 +14,7 @@ public:
 
     // ==== Asset ====
     AssetManager* GetAssetManager();
-    ShaderAsset* LoadShader(const char* name, const char* vsPath, const char* fsPath);
+    ShaderAsset* Asset_LoadShader(const char* name, const char* vsPath, const char* fsPath);
 
     // ==== Camera ====
     CameraModel* GetMainCamera();

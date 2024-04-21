@@ -18,7 +18,7 @@ AssetManager* EngineAPI::GetAssetManager() {
     return engine->ctx->assetManager;
 }
 
-ShaderAsset* EngineAPI::LoadShader(const char* name, const char* vsPath, const char* fsPath) {
+ShaderAsset* EngineAPI::Asset_LoadShader(const char* name, const char* vsPath, const char* fsPath) {
     return engine->Shader_Load(name, vsPath, fsPath);
 }
 

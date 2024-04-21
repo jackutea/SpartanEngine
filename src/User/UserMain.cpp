@@ -16,7 +16,7 @@ void UserMain::OnStart(EngineAPI* cmd) {
     Image img = LoadImage("assets/user/heightmap.png");
     model->model = LoadModelFromMesh(GenMeshHeightmap(img, (Vector3){10, 10, 10}));
     // auto tex = asset->LoadTexture("assets/built_in/textures/tex_white.png");
-    auto sha = cmd->LoadShader("lit", "assets/user/glsl330/shader_vertex_lit.vs", "assets/user/glsl330/shader_vertex_lit.fs");
+    auto sha = cmd->Asset_LoadShader("lit", "assets/user/glsl330/shader_vertex_lit.vs", "assets/user/glsl330/shader_vertex_lit.fs");
     // model->SetTexture(0, MATERIAL_MAP_DIFFUSE, tex->texture);
     model->SetShader(0, sha->shader);
 
@@ -24,7 +24,6 @@ void UserMain::OnStart(EngineAPI* cmd) {
     // ctx->tex = tex;
     ctx->sha = sha;
 
-    throw "He";
 }
 
 void UserMain::OnLogicUpdate(EngineAPI* cmd, float dt) {
