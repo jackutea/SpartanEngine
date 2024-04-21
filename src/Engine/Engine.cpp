@@ -41,7 +41,9 @@ void Engine::Render() {
 
             // Light
             for (auto light : *ctx->rp->ctx->lights) {
-                shader->SetValue(shader->lit_enabledLoc, &light->isEnable, SHADER_UNIFORM_INT);
+
+                int fisEnable = light->isEnable ? 1 : 0;
+                shader->SetValue(shader->lit_enabledLoc, &fisEnable, SHADER_UNIFORM_INT);
 
                 int ftype = (int)light->type;
                 shader->SetValue(shader->lit_typeLoc, &ftype, SHADER_UNIFORM_INT);
@@ -65,15 +67,13 @@ void Engine::Render() {
             shader->SetValue(shader->lit_countLoc, &lightCount, SHADER_UNIFORM_INT);
 
             // ViewPos
-            shader->SetValue(shader->viewPosLoc, fviewPos, SHADER_UNIFORM_VEC3);
+            shader->SetValue(shader->shader.locs[SHADER_LOC_VECTOR_VIEW], fviewPos, SHADER_UNIFORM_VEC3);
 
             // Ambient
             Color ambient = ctx->rp->ctx->sky->ambientColor;
             float fambient[4] = {(float)ambient.r / (float)255, (float)ambient.g / (float)255, (float)ambient.b / (float)255, (float)ambient.a / (float)255};
             shader->SetValue(shader->ambientLoc, &fambient, SHADER_UNIFORM_VEC4);
-
         }
-
     }
 
     // Render Skybox

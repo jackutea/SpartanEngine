@@ -3,7 +3,7 @@
 SkyRenderer::SkyRenderer() {
     skyType = RPSkyType::None;
     solidColor = WHITE;
-    ambientColor = {20, 20, 20, 255};
+    ambientColor = {50, 50, 50, 255};
 }
 
 SkyRenderer::~SkyRenderer() {

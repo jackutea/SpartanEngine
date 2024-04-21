@@ -43,19 +43,13 @@ void main()
 
     // NOTE: Implement here your fragment shader code
 
-    for (int i = 0; i < 1; i++)
-    {
-        if (lights[i].enabled == 1)
-        {
+    for (int i = 0; i < 1; i++) {
+        if (lights[i].enabled == 1) {
             vec3 light = vec3(0.0);
 
-            if (lights[i].type == LIGHT_DIRECTIONAL)
-            {
+            if (lights[i].type == LIGHT_DIRECTIONAL) {
                 light = -normalize(lights[i].target - lights[i].position);
-            }
-
-            if (lights[i].type == LIGHT_POINT)
-            {
+            } else if (lights[i].type == LIGHT_POINT) {
                 light = normalize(lights[i].position - fragPosition);
             }
 
@@ -63,7 +57,9 @@ void main()
             lightDot += lights[i].color.rgb*NdotL;
 
             float specCo = 0.0;
-            if (NdotL > 0.0) specCo = pow(max(0.0, dot(viewD, reflect(-(light), normal))), 16.0); // 16 refers to shine
+            if (NdotL > 0.0) {
+                specCo = pow(max(0.0, dot(viewD, reflect(-(light), normal))), 16.0); // 16 refers to shine
+            }
             specular += specCo;
         }
     }

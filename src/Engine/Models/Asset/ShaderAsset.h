@@ -15,7 +15,6 @@ public:
     int lit_colorLoc;
     int lit_attenuationLoc;
     int lit_countLoc;
-    int viewPosLoc;
     int ambientLoc;
 
 private:

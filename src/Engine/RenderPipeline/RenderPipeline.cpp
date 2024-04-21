@@ -33,7 +33,7 @@ LightRenderer* RenderPipeline::Light_Create(LightType type) {
     light->isEnable = true;
     light->pos = {-2, 1, -2};
     light->target = {0, 0, 0};
-    light->color = WHITE;
+    light->color = {255, 255, 255, 255};
     light->attenuation = 0.2f;
     ctx->lights->push_back(light);
     return light;
