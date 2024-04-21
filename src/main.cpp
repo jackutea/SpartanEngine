@@ -1,5 +1,5 @@
 #include "define.h"
-#include "Engine/EngineCommand.h"
+#include "Engine/EngineAPI.h"
 #include "Engine/Engine.h"
 #include "User/UserMain.h"
 
@@ -10,12 +10,12 @@ int main() {
     SetTraceLogLevel(LOG_WARNING);
 
     // ==== Ctor ====
-    EngineCommand *cmd = new EngineCommand();
+    EngineAPI *api = new EngineAPI();
     Engine *engine = new Engine();
     UserMain *user = new UserMain();
 
     // ==== Inject ====
-    cmd->Inject(engine);
+    api->Inject(engine);
 
     try {
 
@@ -23,10 +23,10 @@ int main() {
         engine->Initialize();
 
         // ==== Start ====
-        user->OnStart(cmd);
+        user->OnStart(api);
 
     } catch (...) {
-        TraceLog(LOG_ERROR, "An error occurred in the initialization.");
+        TraceLog(LOG_ERROR, "Init Error.");
         CloseWindow();
         return 1;
     }
@@ -35,19 +35,21 @@ int main() {
 
         float dt = GetFrameTime();
 
-        {
+        try {
             // Engine Logic
             engine->LogicTick(dt);
 
             // User Logic
-            user->OnLogicUpdate(cmd, dt);
+            user->OnLogicUpdate(api, dt);
+        } catch (...) {
+            TraceLog(LOG_ERROR, "Logic Tick Error.");
         }
 
         try {
             BeginDrawing();
 
             // Ready to draw
-            user->OnReadyDraw(cmd);
+            user->OnReadyDraw(api);
 
             // Draw
             engine->Render();
@@ -57,7 +59,7 @@ int main() {
 
             EndDrawing();
         } catch (...) {
-            TraceLog(LOG_ERROR, "An error occurred in the main loop.");
+            TraceLog(LOG_ERROR, "Render Tick Error.");
         }
     }
 

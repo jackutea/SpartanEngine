@@ -11,12 +11,12 @@ public:
 public:
     UserMain();
     ~UserMain();
-    void OnStart(EngineCommand* cmd);
-    void OnLogicUpdate(EngineCommand* cmd, float dt);
-    void OnReadyDraw(EngineCommand* cmd);
+    void OnStart(EngineAPI* cmd);
+    void OnLogicUpdate(EngineAPI* cmd, float dt);
+    void OnReadyDraw(EngineAPI* cmd);
     void OnQuit();
 
 protected:
     float restFixTime;
-    void OnFixLogicUpdate(EngineCommand* cmd, float fixdt);
+    void OnFixLogicUpdate(EngineAPI* cmd, float fixdt);
 };

@@ -2,13 +2,13 @@
 
 #include "Engine.h"
 
-class EngineCommand {
+class EngineAPI {
 private:
     Engine* engine;
 
 public:
-    EngineCommand();
-    ~EngineCommand();
+    EngineAPI();
+    ~EngineAPI();
 
     void Inject(Engine* engine);
 
