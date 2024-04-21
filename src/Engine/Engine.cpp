@@ -33,6 +33,7 @@ void Engine::Render() {
     // Prepare Shader
     {
         Vector3 viewPos = ctx->cameraManager->GetMainCamera()->GetPosition();
+        float fviewPos[3] = {viewPos.x, viewPos.y, viewPos.z};
 
         int lightCount = ctx->rp->ctx->lights->size();
         for (auto &kv : *ctx->assetManager->ctx->shaders) {
@@ -64,13 +65,15 @@ void Engine::Render() {
             shader->SetValue(shader->lit_countLoc, &lightCount, SHADER_UNIFORM_INT);
 
             // ViewPos
-            shader->SetValue(shader->viewPosLoc, &viewPos, SHADER_UNIFORM_VEC3);
+            shader->SetValue(shader->viewPosLoc, fviewPos, SHADER_UNIFORM_VEC3);
 
             // Ambient
             Color ambient = ctx->rp->ctx->sky->ambientColor;
             float fambient[4] = {(float)ambient.r / (float)255, (float)ambient.g / (float)255, (float)ambient.b / (float)255, (float)ambient.a / (float)255};
             shader->SetValue(shader->ambientLoc, &fambient, SHADER_UNIFORM_VEC4);
+
         }
+
     }
 
     // Render Skybox

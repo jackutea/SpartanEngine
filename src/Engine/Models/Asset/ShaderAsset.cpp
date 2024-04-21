@@ -38,5 +38,8 @@ void ShaderAsset::InitLocs(int lightIndex) {
 }
 
 void ShaderAsset::SetValue(int locIndex, void *value, int uniformType) {
+    if (locIndex == -1) {
+        return;
+    }
     SetShaderValue(shader, locIndex, value, uniformType);
 }

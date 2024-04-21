@@ -1,20 +1,17 @@
 #version 330
 
 // Input vertex attributes
-// 注: 内置变量名字不能改变
 in vec3 vertexPosition;
 in vec2 vertexTexCoord;
 in vec3 vertexNormal;
 in vec4 vertexColor;
 
 // Input uniform values
-// 注: 内置变量名字不能改变
 uniform mat4 mvp;
 uniform mat4 matModel;
 uniform mat4 matNormal;
 
 // Output vertex attributes (to fragment shader)
-// out vec2 fragTexCoord;
 out vec3 fragPosition;
 out vec2 fragTexCoord;
 out vec4 fragColor;

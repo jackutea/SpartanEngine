@@ -31,8 +31,8 @@ LightRenderer* RenderPipeline::Light_Create(LightType type) {
     light->index = ctx->lights->size();
     light->type = type;
     light->isEnable = true;
-    light->pos = {0, 0, 0};
-    light->target = {0.2f, 0.3f, 0};
+    light->pos = {-2, 1, -2};
+    light->target = {0, 0, 0};
     light->color = WHITE;
     light->attenuation = 0.2f;
     ctx->lights->push_back(light);

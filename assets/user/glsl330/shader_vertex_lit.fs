@@ -3,18 +3,21 @@
 // Input vertex attributes (from vertex shader)
 in vec3 fragPosition;
 in vec2 fragTexCoord;
-in vec4 fragColor;
+//in vec4 fragColor;
 in vec3 fragNormal;
 
+// Input uniform values
 uniform sampler2D texture0;
 uniform vec4 colDiffuse;
 
 // Output fragment color
 out vec4 finalColor;
 
-#define MAX_LIGHTS 4
-#define LIGHT_DIRECTIONAL 0
-#define LIGHT_POINT 1
+// NOTE: Add here your custom variables
+
+#define     MAX_LIGHTS              4
+#define     LIGHT_DIRECTIONAL       0
+#define     LIGHT_POINT             1
 
 struct Light {
     int enabled;
@@ -23,16 +26,14 @@ struct Light {
     vec3 target;
     vec4 color;
 };
-uniform Light lights[MAX_LIGHTS];
-uniform int lightsCount;
 
+// Input lighting values
+uniform Light lights[MAX_LIGHTS];
 uniform vec4 ambient;
 uniform vec3 viewPos;
 
-// NOTE: Add here your custom variables
-
-void main() {
-    colDiffuse = vec4(1.0, 1.0, 1.0, 1.0);
+void main()
+{
     // Texel color fetching from texture sampler
     vec4 texelColor = texture(texture0, fragTexCoord);
     vec3 lightDot = vec3(0.0);
@@ -42,15 +43,19 @@ void main() {
 
     // NOTE: Implement here your fragment shader code
 
-    for (int i = 0; i < lightsCount; i++) {
-        if (lights[i].enabled == 1) {
+    for (int i = 0; i < 1; i++)
+    {
+        if (lights[i].enabled == 1)
+        {
             vec3 light = vec3(0.0);
 
-            if (lights[i].type == LIGHT_DIRECTIONAL) {
+            if (lights[i].type == LIGHT_DIRECTIONAL)
+            {
                 light = -normalize(lights[i].target - lights[i].position);
             }
 
-            if (lights[i].type == LIGHT_POINT) {
+            if (lights[i].type == LIGHT_POINT)
+            {
                 light = normalize(lights[i].position - fragPosition);
             }
 
@@ -69,4 +74,3 @@ void main() {
     // Gamma correction
     finalColor = pow(finalColor, vec4(1.0/2.2));
 }
-

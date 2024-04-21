@@ -30,10 +30,14 @@ void UserMain::OnLogicUpdate(EngineCommand* cmd, float dt) {
 
     // 2. Normal Logic Tick
     LightRenderer* light = cmd->RP_GetMainLight();
-    light->target = Vector3Add({0, 0, 0}, {off, 0, 0});
+    if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+        Vector2 mouseDelta = GetMouseDelta();
+        light->pos.x += mouseDelta.x * 0.01f;
+        light->pos.y -= mouseDelta.y * 0.01f;
+    }
 
     CameraModel* cam = cmd->GetMainCamera();
-    cam->MoveTo({off, 0, 0});
+    cam->MoveTo({off, off, 0});
 
     // 3. Fix Logic Tick
     float fixInterval = PublishSetting::FIXED_TIME_STEP;
