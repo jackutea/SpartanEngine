@@ -4,7 +4,7 @@
 #include "Domain/export.h"
 
 class Engine {
-public:
+private:
     EngineContext* ctx;
 
 public:
@@ -20,6 +20,17 @@ public:
 
 #pragma region Light
     LightRenderer* Light_Create(LightType type);
+    LightRenderer* Light_GetMain();
+#pragma endregion
+
+#pragma region Sky
+    SkyRenderer* Sky_GetMain();
+#pragma endregion
+
+#pragma region Camera
+    CameraModel* Camera_Create();
+    void Camera_SetMain(CameraModel* camera);
+    CameraModel* Camera_GetMain();
 #pragma endregion
 
 #pragma region Model
@@ -38,5 +49,10 @@ public:
     FontAsset* Font_Load(const char* path);
     FontAsset* Font_LoadWithUTF8(const char* path, int size, const char* unicodeText);
     void Font_SetDefault(FontAsset* font);
+    FontAsset* Font_GetDefault();
+#pragma endregion
+
+#pragma region RP
+    void RP_Model_Add(ModelAsset* model);
 #pragma endregion
 };

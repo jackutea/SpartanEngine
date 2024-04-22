@@ -36,23 +36,23 @@ void EngineAPI::Font_SetDefault(FontAsset* font) {
 }
 
 FontAsset* EngineAPI::Font_GetDefault() {
-    return engine->ctx->fontCore->GetDefaultFont();
+    return engine->Font_GetDefault();
 }
 
 // ==== Camera ====
 CameraModel* EngineAPI::Camera_GetMain() {
-    return engine->ctx->cameraManager->GetMainCamera();
+    return engine->Camera_GetMain();
 }
 
 // ==== RP ====
 LightRenderer* EngineAPI::RP_GetMainLight() {
-    return engine->ctx->rp->GetMainLight();
+    return engine->Light_GetMain();
 }
 
 SkyRenderer* EngineAPI::RP_GetSky() {
-    return engine->ctx->rp->GetSky();
+    return engine->Sky_GetMain();
 }
 
 void EngineAPI::RP_Model_Add(ModelAsset* model) {
-    engine->ctx->rp->Model_Add(model);
+    engine->RP_Model_Add(model);
 }

@@ -1,7 +1,12 @@
-Program Language: C++17(actually is C with class)
+Compiler: GCC 13.2.0
+Program Language: C99/C++17(actually is C with class)
 
 main.cpp {
     User.dll {
+        SpartanEngine.dll
+    }
+
+    SpartanEditor.dll {
         SpartanEngine.dll
     }
 

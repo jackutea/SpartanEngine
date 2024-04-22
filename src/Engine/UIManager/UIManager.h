@@ -3,7 +3,7 @@
 #include "UIManagerContext.h"
 
 class UIManager {
-public:
+private:
     UIManagerContext* ctx;
 
 public:

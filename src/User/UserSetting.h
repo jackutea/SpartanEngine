@@ -6,7 +6,7 @@ using namespace std::string_literals;
 namespace UserSetting {
 
 // Game Info
-auto GAME_TITLE = u8"Spartan 引擎";
+static auto GAME_TITLE = u8"Spartan 引擎";
 
 // Window Mode
 static int SCREEN_WIDTH = 800;

@@ -1,14 +1,9 @@
 #include "CameraManagerContext.h"
 
 CameraManagerContext::CameraManagerContext() {
-
-    CameraModel *defaultCamera = new CameraModel();
-    defaultCamera->id = cameraIDRecord++;
-
+    cameraIDRecord = 0;
     cameras = new unordered_map<int, CameraModel *>();
-    cameras->insert({defaultCamera->id, defaultCamera});
-
-    mainCameraID = defaultCamera->id;
+    mainCameraID = 0;
 }
 
 CameraManagerContext::~CameraManagerContext() {
@@ -20,4 +15,8 @@ CameraManagerContext::~CameraManagerContext() {
 
 CameraModel *CameraManagerContext::GetMainCamera() {
     return cameras->at(mainCameraID);
+}
+
+void CameraManagerContext::SetMainCamera(CameraModel *camera) {
+    mainCameraID = camera->id;
 }

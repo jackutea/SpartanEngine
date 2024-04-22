@@ -1,10 +1,12 @@
 #include "EditorMain.h"
 
 EditorMain::EditorMain() {
+    debugCameraController = new DebugCameraController();
     ctx = new EditorContext();
 }
 
 EditorMain::~EditorMain() {
+    delete debugCameraController;
     delete ctx;
 }
 
@@ -17,6 +19,7 @@ void EditorMain::Initialize() {
 }
 
 void EditorMain::ProcessUserInterface(float dt) {
+    debugCameraController->Process(engine, dt);
 }
 
 void EditorMain::OnReadyDraw() {

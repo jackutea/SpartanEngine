@@ -12,7 +12,6 @@ public:
 public:
     CameraModel();
     ~CameraModel();
-    void Initialize();
     Vector3 GetPosition();
     Vector3 GetTarget();
     void Move(Vector3 offset);

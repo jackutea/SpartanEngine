@@ -1,10 +1,12 @@
 #pragma once
 
 #include "EditorContext.h"
-#include "../Engine/Engine.h"
+#include "Controller/DebugCameraController.h"
+#include "import.h"
 
 class EditorMain {
 private:
+    DebugCameraController *debugCameraController;
     EditorContext *ctx;
     Engine *engine;
 

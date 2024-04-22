@@ -14,4 +14,5 @@ public:
     CameraManagerContext();
     ~CameraManagerContext();
     CameraModel* GetMainCamera();
+    void SetMainCamera(CameraModel* camera);
 };

@@ -21,9 +21,6 @@ CameraModel::CameraModel() {
 CameraModel::~CameraModel() {
 }
 
-void CameraModel::Initialize() {
-}
-
 Vector3 CameraModel::GetPosition() {
     if (type == CameraType::Camera3D) {
         return cam3D.position;
@@ -46,6 +43,7 @@ Vector3 CameraModel::GetTarget() {
 
 void CameraModel::Move(Vector3 offset) {
     if (type == CameraType::Camera3D) {
+        cam3D.position = Vector3Add(cam3D.position, offset);
         cam3D.target = Vector3Add(cam3D.target, offset);
     } else if (type == CameraType::Camera2D) {
         cam2D.offset = Vector2Add(cam2D.offset, (Vector2){offset.x, offset.y});
@@ -54,7 +52,7 @@ void CameraModel::Move(Vector3 offset) {
 
 void CameraModel::MoveTo(Vector3 target) {
     if (type == CameraType::Camera3D) {
-        cam3D.target = target;
+        cam3D.position = target;
     } else if (type == CameraType::Camera2D) {
         cam2D.offset = (Vector2){target.x, target.y};
     }

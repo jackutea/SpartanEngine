@@ -63,7 +63,31 @@ LightRenderer *Engine::Light_Create(LightType type) {
 
     return light;
 }
+
+LightRenderer *Engine::Light_GetMain() {
+    return ctx->rp->GetMainLight();
+}
 #pragma endregion
+
+#pragma region Sky
+SkyRenderer *Engine::Sky_GetMain() {
+    return ctx->rp->GetSky();
+}
+#pragma endregion
+
+#pragma region Camera
+CameraModel *Engine::Camera_Create() {
+    CameraModel *camera = ctx->cameraManager->CreateCamera();
+    return camera;
+}
+
+void Engine::Camera_SetMain(CameraModel *camera) {
+    ctx->cameraManager->SetMainCamera(camera);
+}
+
+CameraModel *Engine::Camera_GetMain() {
+    return ctx->cameraManager->GetMainCamera();
+}
 
 #pragma region Model
 ModelAsset *Engine::Model_Load(const char *name, const char *path) {
@@ -122,5 +146,15 @@ FontAsset *Engine::Font_LoadWithUTF8(const char *path, int size, const char *uni
 
 void Engine::Font_SetDefault(FontAsset *font) {
     ctx->fontCore->SetDefaultFont(font);
+}
+
+FontAsset *Engine::Font_GetDefault() {
+    return ctx->fontCore->GetDefaultFont();
+}
+#pragma endregion
+
+#pragma region RP
+void Engine::RP_Model_Add(ModelAsset *model) {
+    ctx->rp->Model_Add(model);
 }
 #pragma endregion
