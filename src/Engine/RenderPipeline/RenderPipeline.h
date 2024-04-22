@@ -15,7 +15,8 @@ public:
 
     LightRenderer* Light_Create(LightType type);
     LightRenderer* GetMainLight();
-    void Sky_SetSolidColor(Color color);
+    SkyRenderer* GetSky();
+    void Sky_SetAsSolidColor(Color color);
     void Model_Add(ModelAsset *model);
     
 protected:

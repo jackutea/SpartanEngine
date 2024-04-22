@@ -36,8 +36,8 @@ LightRenderer* EngineAPI::RP_GetMainLight() {
     return engine->ctx->rp->GetMainLight();
 }
 
-void EngineAPI::RP_Sky_SetSolid(Color color) {
-    engine->ctx->rp->Sky_SetSolidColor(color);
+SkyRenderer* EngineAPI::RP_GetSky() {
+    return engine->ctx->rp->GetSky();
 }
 
 void EngineAPI::RP_Model_Add(ModelAsset* model) {

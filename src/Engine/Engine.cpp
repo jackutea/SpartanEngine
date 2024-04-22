@@ -13,10 +13,10 @@ Engine::~Engine() {
 void Engine::Initialize() {
     // Load built-in assets
 
-    // Camera
+    // Camera: MainCamera
     ctx->cameraManager->Initialize();
 
-    // RP
+    // RP: MainLight, Sky
     ctx->rp->Initialize();
 }
 

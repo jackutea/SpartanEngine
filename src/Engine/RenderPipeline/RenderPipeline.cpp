@@ -15,7 +15,7 @@ void RenderPipeline::Initialize() {
     ctx->mainLightID = light->index;
 
     // Sky
-    Sky_SetSolidColor(RAYWHITE);
+    Sky_SetAsSolidColor(RAYWHITE);
 }
 
 void RenderPipeline::RenderAll(CameraModel& cam) {
@@ -52,7 +52,11 @@ void RenderPipeline::Sky_Render(CameraModel& cam) const {
     }
 }
 
-void RenderPipeline::Sky_SetSolidColor(Color color) {
+SkyRenderer* RenderPipeline::GetSky() {
+    return ctx->sky;
+}
+
+void RenderPipeline::Sky_SetAsSolidColor(Color color) {
     SkyRenderer* sky = ctx->sky;
     sky->skyType = RPSkyType::SolidColor;
     sky->solidColor = color;
