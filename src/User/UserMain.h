@@ -2,7 +2,7 @@
 
 #include "import.h"
 #include "UserContext.h"
-#include "PublishSetting.h"
+#include "UserSetting.h"
 
 class UserMain {
 public:
@@ -11,11 +11,12 @@ public:
 public:
     UserMain();
     ~UserMain();
-    void OnStart(EngineAPI* cmd);
-    void OnLogicUpdate(EngineAPI* cmd, float dt);
-    void OnReadyDraw(EngineAPI* cmd);
+    void OnStart(EngineAPI* api);
+    void OnLogicUpdate(EngineAPI* api, float dt);
+    void OnReadyDraw(EngineAPI* api);
+    void OnPostGUI(EngineAPI* api, float dt);
 
 private:
     float restFixTime;
-    void OnFixLogicUpdate(EngineAPI* cmd, float fixdt);
+    void OnFixLogicUpdate(EngineAPI* api, float fixdt);
 };

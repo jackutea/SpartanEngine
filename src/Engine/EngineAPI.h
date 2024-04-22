@@ -16,6 +16,11 @@ public:
     ModelAsset* Asset_LoadModel(const char* name, const char* path);
     TextureAsset* Asset_LoadTexture(const char* name, const char* path);
     ShaderAsset* Asset_LoadShader(const char* name, const char* vsPath, const char* fsPath);
+    FontAsset* Asset_LoadFont(const char* path);
+
+    // ==== Font ====
+    void Font_SetDefault(FontAsset* font);
+    FontAsset* Font_GetDefault();
 
     // ==== Camera ====
     CameraModel* Camera_GetMain();

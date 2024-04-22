@@ -5,6 +5,7 @@ EngineContext::EngineContext() {
     rp = new RenderPipeline();
     ui = new UIManager();
     cameraManager = new CameraManager();
+    fontCore = new FontCore();
 }
 
 EngineContext::~EngineContext() {
@@ -12,4 +13,5 @@ EngineContext::~EngineContext() {
     delete rp;
     delete ui;
     delete cameraManager;
+    delete fontCore;
 }

@@ -33,4 +33,10 @@ public:
 #pragma region Shader
     ShaderAsset* Shader_Load(const char* name, const char* vsPath, const char* fsPath);
 #pragma endregion
+
+#pragma region Font
+    FontAsset* Font_Load(const char* path);
+    FontAsset* Font_LoadWithUTF8(const char* path, int size, const char* unicodeText);
+    void Font_SetDefault(FontAsset* font);
+#pragma endregion
 };

@@ -1,5 +1,6 @@
-#include "Engine.h"
 #include <iostream>
+#include "Engine.h"
+#include "Consts/export.h"
 
 Engine::Engine() {
     ctx = new EngineContext();
@@ -12,6 +13,8 @@ Engine::~Engine() {
 #pragma region LifeCycle
 void Engine::Initialize() {
     // Load built-in assets
+    this->Font_LoadWithUTF8("assets/built_in/fonts/SIMHEI.TTF", 30, SPT_Unicode::cn);
+    // this->Font_Load("assets/built_in/fonts/SIMHEI.TTF");
 
     // Camera: MainCamera
     ctx->cameraManager->Initialize();
@@ -87,5 +90,37 @@ ShaderAsset *Engine::Shader_Load(const char *name, const char *vsPath, const cha
     }
 
     return shader;
+}
+#pragma endregion
+
+#pragma region Font
+FontAsset *Engine::Font_Load(const char *path) {
+
+    FontAsset *font = ctx->assetManager->LoadFont(path);
+
+    FontAsset *defaultFont = ctx->fontCore->GetDefaultFont();
+    if (defaultFont == nullptr) {
+        ctx->fontCore->SetDefaultFont(font);
+        SLog("Set Default Font: %s", path);
+    }
+
+    return font;
+}
+
+FontAsset *Engine::Font_LoadWithUTF8(const char *path, int size, const char *unicodeText) {
+
+    FontAsset *font = ctx->assetManager->LoadFontWithUTF8(path, size, unicodeText);
+
+    FontAsset *defaultFont = ctx->fontCore->GetDefaultFont();
+    if (defaultFont == nullptr) {
+        ctx->fontCore->SetDefaultFont(font);
+        SLog("Set Default Font: %s", path);
+    }
+
+    return font;
+}
+
+void Engine::Font_SetDefault(FontAsset *font) {
+    ctx->fontCore->SetDefaultFont(font);
 }
 #pragma endregion

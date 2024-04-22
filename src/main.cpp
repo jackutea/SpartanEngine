@@ -8,7 +8,7 @@
 
 int main() {
 
-    InitWindow(PublishSetting::SCREEN_WIDTH, PublishSetting::SCREEN_HEIGHT, PublishSetting::GAME_TITLE);
+    InitWindow(UserSetting::SCREEN_WIDTH, UserSetting::SCREEN_HEIGHT, UserSetting::GAME_TITLE);
 
     SetTraceLogLevel(LOG_WARNING);
 
@@ -75,6 +75,7 @@ int main() {
             engine->Render();
 
             // UI
+            user->OnPostGUI(api, dt);
             engine->ProcessAndRenderUI();
 
             EndDrawing();

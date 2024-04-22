@@ -90,3 +90,28 @@ void AssetManager::UnloadShader(unsigned int id) {
     delete shader;
     ctx->shaders->erase(id);
 }
+
+// ==== Font ====
+FontAsset *AssetManager::LoadFont(const char *path) {
+    FontAsset *font = new FontAsset();
+    font->id = ctx->fontIDRecord++;
+    font->Load(path);
+    ctx->fonts->insert({font->id, font});
+    return font;
+}
+
+FontAsset *AssetManager::LoadFontWithUTF8(const char *path, int size, const char *unicodeText) {
+    FontAsset *font = new FontAsset();
+    font->id = ctx->fontIDRecord++;
+    font->LoadWithUTF8(path, size, unicodeText);
+    ctx->fonts->insert({font->id, font});
+    return font;
+}
+
+FontAsset *AssetManager::GetFont(int id) {
+    if (ctx->fonts->count(id) == 0) {
+        SLog("Font not found: %d\r\n", id);
+        return nullptr;
+    }
+    return ctx->fonts->at(id);
+}

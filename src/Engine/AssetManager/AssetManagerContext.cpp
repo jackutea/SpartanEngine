@@ -9,6 +9,9 @@ AssetManagerContext::AssetManagerContext() {
 
     shaderIDRecord = 0;
     shaders = new unordered_map<unsigned int, ShaderAsset *>(100);
+
+    fontIDRecord = 0;
+    fonts = new unordered_map<int, FontAsset *>(100);
 }
 
 AssetManagerContext::~AssetManagerContext() {
@@ -32,4 +35,11 @@ AssetManagerContext::~AssetManagerContext() {
     }
     shaders->clear();
     delete shaders;
+
+    // - Release all fonts
+    for (auto &font : *fonts) {
+        delete font.second;
+    }
+    fonts->clear();
+    delete fonts;
 }

@@ -4,6 +4,7 @@
 #include "RenderPipeline/RenderPipeline.h"
 #include "UIManager/UIManager.h"
 #include "CameraManager/CameraManager.h"
+#include "Core_Font/FontCore.h"
 
 class EngineContext {
 public:
@@ -11,7 +12,7 @@ public:
     RenderPipeline* rp;
     UIManager* ui;
     CameraManager* cameraManager;
-
+    FontCore* fontCore;
 public:
     EngineContext();
     ~EngineContext();

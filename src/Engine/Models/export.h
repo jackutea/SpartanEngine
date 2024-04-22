@@ -3,6 +3,7 @@
 #include "Asset/ModelAsset.h"
 #include "Asset/ShaderAsset.h"
 #include "Asset/TextureAsset.h"
+#include "Asset/FontAsset.h"
 
 #include "Camera/CameraModel.h"
 

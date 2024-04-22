@@ -26,6 +26,19 @@ ShaderAsset* EngineAPI::Asset_LoadShader(const char* name, const char* vsPath, c
     return engine->Shader_Load(name, vsPath, fsPath);
 }
 
+FontAsset* EngineAPI::Asset_LoadFont(const char* path) {
+    return engine->Font_Load(path);
+}
+
+// ==== Font ====
+void EngineAPI::Font_SetDefault(FontAsset* font) {
+    engine->Font_SetDefault(font);
+}
+
+FontAsset* EngineAPI::Font_GetDefault() {
+    return engine->ctx->fontCore->GetDefaultFont();
+}
+
 // ==== Camera ====
 CameraModel* EngineAPI::Camera_GetMain() {
     return engine->ctx->cameraManager->GetMainCamera();
