@@ -41,6 +41,16 @@ Vector3 CameraModel::GetTarget() {
     }
 }
 
+Vector3 CameraModel::GetForward() {
+    if (type == CameraType::Camera3D) {
+        return Vector3Normalize(Vector3Subtract(cam3D.target, cam3D.position));
+    } else if (type == CameraType::Camera2D) {
+        return (Vector3){0.0f, 0.0f, 1.0f};
+    } else {
+        throw "Invalid CameraType";
+    }
+}
+
 void CameraModel::Move(Vector3 offset) {
     if (type == CameraType::Camera3D) {
         cam3D.position = Vector3Add(cam3D.position, offset);

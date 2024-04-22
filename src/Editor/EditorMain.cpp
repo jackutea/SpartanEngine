@@ -12,6 +12,7 @@ EditorMain::~EditorMain() {
 
 void EditorMain::Inject(Engine *engine) {
     this->engine = engine;
+    debugCameraController->Inject(ctx);
 }
 
 void EditorMain::Initialize() {
