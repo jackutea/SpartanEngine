@@ -9,7 +9,7 @@ AssetManager::~AssetManager() {
 }
 
 // ==== Model ====
-ModelAsset *AssetManager::LoadModel(const char *path) {
+ModelAsset *AssetManager::LoadModel(const char *name, const char *path) {
     ModelAsset *model = new ModelAsset();
     model->tf.rotation = QuaternionIdentity();
     model->tf.translation = Vector3Zero();

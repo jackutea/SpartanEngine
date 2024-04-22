@@ -11,7 +11,7 @@ public:
     AssetManager();
     ~AssetManager();
 
-    ModelAsset *LoadModel(const char *path);
+    ModelAsset *LoadModel(const char *name, const char *path);
     ModelAsset *GetModel(unsigned int id);
     void UnloadModel(unsigned int id);
 

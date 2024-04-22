@@ -14,8 +14,12 @@ void EngineAPI::Inject(Engine* engine) {
 }
 
 // ==== Asset ====
-AssetManager* EngineAPI::GetAssetManager() {
-    return engine->ctx->assetManager;
+ModelAsset* EngineAPI::Asset_LoadModel(const char* name, const char* path) {
+    return engine->Model_Load(name, path);
+}
+
+TextureAsset* EngineAPI::Asset_LoadTexture(const char* name, const char* path) {
+    return engine->Texture_Load(name, path);
 }
 
 ShaderAsset* EngineAPI::Asset_LoadShader(const char* name, const char* vsPath, const char* fsPath) {
@@ -23,7 +27,7 @@ ShaderAsset* EngineAPI::Asset_LoadShader(const char* name, const char* vsPath, c
 }
 
 // ==== Camera ====
-CameraModel* EngineAPI::GetMainCamera() {
+CameraModel* EngineAPI::Camera_GetMain() {
     return engine->ctx->cameraManager->GetMainCamera();
 }
 

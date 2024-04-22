@@ -10,11 +10,7 @@ UserMain::~UserMain() {
 }
 
 void UserMain::OnStart(EngineAPI* cmd) {
-    auto asset = cmd->GetAssetManager();
-    // auto model = asset->LoadModel("assets/built_in/models/mesh_sphere.glb");
-    ModelAsset* model = new ModelAsset();
-    Image img = LoadImage("assets/user/heightmap.png");
-    model->model = LoadModelFromMesh(GenMeshHeightmap(img, (Vector3){10, 10, 10}));
+    ModelAsset* model = cmd->Asset_LoadModel("Sphere", "assets/built_in/models/mesh_sphere.glb");
     // auto tex = asset->LoadTexture("assets/built_in/textures/tex_white.png");
     auto sha = cmd->Asset_LoadShader("lit", "assets/user/glsl330/shader_vertex_lit.vs", "assets/user/glsl330/shader_vertex_lit.fs");
     // model->SetTexture(0, MATERIAL_MAP_DIFFUSE, tex->texture);

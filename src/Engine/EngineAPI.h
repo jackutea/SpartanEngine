@@ -13,11 +13,12 @@ public:
     void Inject(Engine* engine);
 
     // ==== Asset ====
-    AssetManager* GetAssetManager();
+    ModelAsset* Asset_LoadModel(const char* name, const char* path);
+    TextureAsset* Asset_LoadTexture(const char* name, const char* path);
     ShaderAsset* Asset_LoadShader(const char* name, const char* vsPath, const char* fsPath);
 
     // ==== Camera ====
-    CameraModel* GetMainCamera();
+    CameraModel* Camera_GetMain();
 
     // ==== RP ====
     LightRenderer* RP_GetMainLight();

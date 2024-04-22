@@ -1,6 +1,7 @@
 #pragma once
 
 #include "EngineContext.h"
+#include "Domain/export.h"
 
 class Engine {
 public:
@@ -19,6 +20,14 @@ public:
 
 #pragma region Light
     LightRenderer* Light_Create(LightType type);
+#pragma endregion
+
+#pragma region Model
+    ModelAsset* Model_Load(const char* name, const char* path);
+#pragma endregion
+
+#pragma region Texture
+    TextureAsset* Texture_Load(const char* name, const char* path);
 #pragma endregion
 
 #pragma region Shader
