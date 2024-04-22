@@ -1,4 +1,5 @@
 ==== Asset ====
+- Notice: 加载资源必须在 InitWindow 后
 ```
 - font: .ttf
 - 3DModel: .obj .glb .gltf .m3d
@@ -36,7 +37,8 @@ struct Light {
     vec4 color;
 };
 uniform Light lights[MAX_LIGHTS];
+uniform int lightCount;
 
-uniform vec3 viewPos
+uniform vec3 viewPos;
 
 ```

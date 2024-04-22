@@ -32,7 +32,7 @@ void ShaderAsset::InitLocs(int lightIndex) {
     lit_targetLoc = GetShaderLocation(shader, TextFormat("lights[%i].target", lightIndex));
     lit_colorLoc = GetShaderLocation(shader, TextFormat("lights[%i].color", lightIndex));
     lit_attenuationLoc = GetShaderLocation(shader, TextFormat("lights[%i].attenuation", lightIndex));
-    lit_countLoc = GetShaderLocation(shader, "lightsCount");
+    lit_countLoc = GetShaderLocation(shader, "lightCount");
     ambientLoc = GetShaderLocation(shader, "ambient");
     shader.locs[SHADER_LOC_VECTOR_VIEW] = GetShaderLocation(shader, "viewPos");
 }

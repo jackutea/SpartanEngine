@@ -1,0 +1,3 @@
+- Shift + F1: Toggle DebugCameraControl
+`MouseRightDown + WSAD` to move camera
+`MouseRightDown + MouseMove` to rotate camera

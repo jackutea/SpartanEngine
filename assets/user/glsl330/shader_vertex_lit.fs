@@ -29,6 +29,7 @@ struct Light {
 
 // Input lighting values
 uniform Light lights[MAX_LIGHTS];
+uniform int lightCount;
 uniform vec4 ambient;
 uniform vec3 viewPos;
 
@@ -43,7 +44,7 @@ void main()
 
     // NOTE: Implement here your fragment shader code
 
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < lightCount; i++) {
         if (lights[i].enabled == 1) {
             vec3 light = vec3(0.0);
 

@@ -2,6 +2,7 @@
 
 class EditorContext {
 public:
+    bool isDebugCameraEnabled;
     float debugCameraSpeedMultiply;
 
 public:

@@ -1,5 +1,6 @@
 Compiler: GCC 13.2.0
-Program Language: C99/C++17(actually is C with class)
+Program Language: C99/C++17
+Style: C++ -> C with classes
 
 main.cpp {
     User.dll {

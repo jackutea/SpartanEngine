@@ -11,7 +11,10 @@ void DebugCameraController::Inject(EditorContext *ctx) {
 }
 
 void DebugCameraController::Process(Engine *engine, float dt) {
-    if (IsMouseButtonDown(MOUSE_RIGHT_BUTTON)) {
+    if (IsKeyDown(KEY_LEFT_SHIFT) && IsKeyPressed(KEY_F1)) {
+        ctx->isDebugCameraEnabled = !ctx->isDebugCameraEnabled;
+    }
+    if (ctx->isDebugCameraEnabled && IsMouseButtonDown(MOUSE_RIGHT_BUTTON)) {
 
         CameraModel *mainCamera = engine->Camera_GetMain();
         Vector3 cameraFwd = mainCamera->GetForward();
