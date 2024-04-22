@@ -14,9 +14,8 @@ public:
     void OnStart(EngineAPI* cmd);
     void OnLogicUpdate(EngineAPI* cmd, float dt);
     void OnReadyDraw(EngineAPI* cmd);
-    void OnQuit();
 
-protected:
+private:
     float restFixTime;
     void OnFixLogicUpdate(EngineAPI* cmd, float fixdt);
 };

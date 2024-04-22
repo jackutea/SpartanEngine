@@ -2,6 +2,9 @@
 #include "Engine/EngineAPI.h"
 #include "Engine/Engine.h"
 #include "User/UserMain.h"
+#ifndef SPARTAN_RUNTIME_ONLY
+#include "Editor/EditorMain.h"
+#endif
 
 int main() {
 
@@ -13,14 +16,23 @@ int main() {
     EngineAPI *api = new EngineAPI();
     Engine *engine = new Engine();
     UserMain *user = new UserMain();
+#ifndef SPARTAN_RUNTIME_ONLY
+    EditorMain *editor = new EditorMain();
+#endif
 
     // ==== Inject ====
     api->Inject(engine);
+#ifndef SPARTAN_RUNTIME_ONLY
+    editor->Inject(engine);
+#endif
 
     try {
 
         // ==== Init ====
         engine->Initialize();
+#ifndef SPARTAN_RUNTIME_ONLY
+        editor->Initialize();
+#endif
 
         // ==== Start ====
         user->OnStart(api);
@@ -36,6 +48,10 @@ int main() {
         float dt = GetFrameTime();
 
         try {
+#ifndef SPARTAN_RUNTIME_ONLY
+            // Editor Logic
+            editor->ProcessUserInterface(dt);
+#endif
             // Engine Logic
             engine->LogicTick(dt);
 
@@ -48,6 +64,10 @@ int main() {
         try {
             BeginDrawing();
 
+#ifndef SPARTAN_RUNTIME_ONLY
+            // Editor Draw
+            editor->OnReadyDraw();
+#endif
             // Ready to draw
             user->OnReadyDraw(api);
 
@@ -65,10 +85,12 @@ int main() {
 
     CloseWindow();
 
-    user->OnQuit();
-
     delete user;
     delete engine;
+    delete api;
+#ifndef SPARTAN_RUNTIME_ONLY
+    delete editor;
+#endif
 
     return 0;
 }

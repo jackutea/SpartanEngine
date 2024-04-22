@@ -65,7 +65,3 @@ void UserMain::OnFixLogicUpdate(EngineAPI* cmd, float fixdt) {
 void UserMain::OnReadyDraw(EngineAPI* cmd) {
     cmd->RP_Model_Add(ctx->model);
 }
-
-void UserMain::OnQuit() {
-    // 释放资源
-}
