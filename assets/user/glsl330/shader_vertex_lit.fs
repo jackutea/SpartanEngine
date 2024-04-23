@@ -62,15 +62,20 @@ void main()
             lightDot += lights[i].color.rgb*NdotL;
 
             float specCo = 0.0;
+            // specular
             if (NdotL > 0.0) {
-                // specular
-                float shiness = 16.0; // 越大表面越光滑, 越小表面越粗糙
-                // - Phong
-                // vec3 reflectVec = reflect(-light, normal);
-                // specCo = pow(max(0.0, dot(viewD, reflectVec)), shiness);
-                // - Blinn-Phong (性能更好, 效果略有差别-高光弱一些)
-                vec3 halfVec = normalize(light + viewD);
-                float specCo = pow(max(0.0, dot(halfVec, normal)), shiness);
+                // {
+                //     // - Phong
+                //     float shiness = 8.0; // 越大表面越光滑, 越小表面越粗糙
+                //     vec3 reflectVec = reflect(-light, normal);
+                //     specCo = pow(max(0.0, dot(viewD, reflectVec)), shiness);
+                // }
+                {
+                    // - Blinn-Phong (性能更好, 效果略有差别-高光弱一些)
+                    float shiness = 16.0; // 越大表面越光滑, 越小表面越粗糙
+                    vec3 halfVec = normalize(light + viewD);
+                    float specCo = pow(max(0.0, dot(halfVec, normal)), shiness);
+                }
             }
             specular += specCo;
         }
@@ -79,7 +84,7 @@ void main()
     finalColor = (texelColor*((colDiffuse + vec4(specular, 1.0))*vec4(lightDot, 1.0)));
 
     // Ambient light
-    finalColor += texelColor*(ambient/10.0)*colDiffuse;
+    finalColor += texelColor*(ambient*0.1)*colDiffuse;
 
     // Gamma correction
     finalColor = pow(finalColor, vec4(1.0/2.2));

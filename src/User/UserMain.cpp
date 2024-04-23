@@ -16,6 +16,8 @@ void UserMain::OnStart(EngineAPI* api) {
     // model->model = LoadModelFromMesh(GenMeshSphere(1, 64, 64));
     auto tex = api->Asset_LoadTexture("white", "assets/built_in/textures/tex_white.png");
     auto sha = api->Asset_LoadShader("lit", "assets/user/glsl330/shader_vertex_lit.vs", "assets/user/glsl330/shader_vertex_lit.fs");
+
+    // 上各种贴图
     model->SetTexture(0, MATERIAL_MAP_DIFFUSE, tex->texture);
     model->SetShader(0, sha->shader);
 
