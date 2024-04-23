@@ -17,6 +17,7 @@ void EditorMain::Inject(Engine *engine) {
 
 void EditorMain::Initialize() {
     std::cout << "EditorMain::Initialize()" << std::endl;
+    
 }
 
 void EditorMain::ProcessUserInterface(float dt) {

@@ -70,6 +70,7 @@ ShaderAsset *AssetManager::LoadShader(const char *name, const char *vsPath, cons
     ShaderAsset *shader = new ShaderAsset();
     shader->Load(name, vsPath, fsPath);
     ctx->shaders->insert({shader->shader.id, shader});
+    ctx->shadersByString->insert({name, shader});
     return shader;
 }
 
@@ -81,14 +82,34 @@ ShaderAsset *AssetManager::GetShader(unsigned int id) {
     return ctx->shaders->at(id);
 }
 
+ShaderAsset *AssetManager::GetShader(const char *name) {
+    if (ctx->shadersByString->count(name) == 0) {
+        SLog("Shader not found: %s\r\n", name);
+        return nullptr;
+    }
+    return ctx->shadersByString->at(name);
+}
+
 void AssetManager::UnloadShader(unsigned int id) {
     if (ctx->shaders->count(id) == 0) {
         SLog("Shader not found: %d\r\n", id);
         return;
     }
     ShaderAsset *shader = ctx->shaders->at(id);
-    delete shader;
     ctx->shaders->erase(id);
+    ctx->shadersByString->erase(shader->name);
+    delete shader;
+}
+
+void AssetManager::UnloadShader(const char *name) {
+    if (ctx->shadersByString->count(name) == 0) {
+        SLog("Shader not found: %s\r\n", name);
+        return;
+    }
+    ShaderAsset *shader = ctx->shadersByString->at(name);
+    ctx->shadersByString->erase(name);
+    ctx->shaders->erase(shader->GetID());
+    delete shader;
 }
 
 // ==== Font ====

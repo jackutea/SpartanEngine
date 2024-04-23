@@ -26,6 +26,10 @@ ShaderAsset* EngineAPI::Asset_LoadShader(const char* name, const char* vsPath, c
     return engine->Shader_Load(name, vsPath, fsPath);
 }
 
+void EngineAPI::Asset_ReloadShader(ShaderAsset* shader) {
+    engine->Shader_Reload(shader);
+}
+
 FontAsset* EngineAPI::Asset_LoadFont(const char* path) {
     return engine->Font_Load(path);
 }

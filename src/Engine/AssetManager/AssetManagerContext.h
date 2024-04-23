@@ -18,6 +18,7 @@ public:
 
     unsigned int shaderIDRecord;
     unordered_map<unsigned int, ShaderAsset *> *shaders;
+    unordered_map<const char *, ShaderAsset *> *shadersByString;
 
     int fontIDRecord;
     unordered_map<int, FontAsset *> *fonts;

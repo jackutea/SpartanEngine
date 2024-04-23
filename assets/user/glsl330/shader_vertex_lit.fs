@@ -54,7 +54,11 @@ void main()
                 light = normalize(lights[i].position - fragPosition);
             }
 
-            float NdotL = max(dot(normal, light), 0.0);
+            // - Lambert
+            float NdotL = dot(normal, light); // -1, 0(明暗交界线), 1
+            // - Half-Lambert
+            // float NdotL = dot(normal, light) * 0.5 + 0.5; // 0, 0.5(明暗交界线), 1
+            NdotL = max(NdotL, 0.0);
             lightDot += lights[i].color.rgb*NdotL;
 
             float specCo = 0.0;

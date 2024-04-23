@@ -11,7 +11,9 @@ UserMain::~UserMain() {
 
 void UserMain::OnStart(EngineAPI* api) {
     // Model
-    ModelAsset* model = api->Asset_LoadModel("Sphere", "assets/built_in/models/mesh_sphere.glb");
+    ModelAsset* model = api->Asset_LoadModel("Sphere", "assets/built_in/models/mesh_polyball.glb");
+    // ModelAsset* model = new ModelAsset();
+    // model->model = LoadModelFromMesh(GenMeshSphere(1, 64, 64));
     auto tex = api->Asset_LoadTexture("white", "assets/built_in/textures/tex_white.png");
     auto sha = api->Asset_LoadShader("lit", "assets/user/glsl330/shader_vertex_lit.vs", "assets/user/glsl330/shader_vertex_lit.fs");
     model->SetTexture(0, MATERIAL_MAP_DIFFUSE, tex->texture);
@@ -31,6 +33,11 @@ void UserMain::OnLogicUpdate(EngineAPI* api, float dt) {
     // 1. Process Input
     CameraModel* camera = api->Camera_GetMain();
     // camera->Move({0, 0, 1*dt});
+
+    if (IsKeyPressed(KEY_O)) {
+        api->Asset_ReloadShader(ctx->sha);
+        ctx->model->SetShader(0, ctx->sha->shader);
+    }
 
     // 2. Normal Logic Tick
     LightRenderer* light = api->RP_GetMainLight();

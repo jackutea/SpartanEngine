@@ -9,6 +9,9 @@ ShaderAsset::~ShaderAsset() {
     if (shader.id != 0) {
         UnloadShader(shader);
     }
+    delete name;
+    delete vsPath;
+    delete fsPath;
 }
 
 unsigned int ShaderAsset::GetID() {
@@ -22,6 +25,13 @@ const char *ShaderAsset::GetName() {
 void ShaderAsset::Load(const char *name, const char *vsPath, const char *fsPath) {
     this->name = new char[strlen(name) + 1];
     strcpy(this->name, name);
+
+    this->vsPath = new char[strlen(vsPath) + 1];
+    strcpy(this->vsPath, vsPath);
+
+    this->fsPath = new char[strlen(fsPath) + 1];
+    strcpy(this->fsPath, fsPath);
+
     shader = LoadShader(vsPath, fsPath);
 }
 

@@ -18,3 +18,10 @@ Vector3 value = Vector3.Cross(dir1, dir2)
     - z3 = cp.cross(ca).z
     - z1 * z2 > 0 && z2 * z3 > 0 则在内部
 ```
+
+==== Shading ====
+```
+> Lambert 光照模型
+Diffuse 漫反射
+Ambient 环境光(环境光本来是复杂的, 但Lambert当作只有一种色)
+```

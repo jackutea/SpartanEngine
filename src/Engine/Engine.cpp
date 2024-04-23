@@ -117,6 +117,15 @@ ShaderAsset *Engine::Shader_Load(const char *name, const char *vsPath, const cha
 
     return shader;
 }
+
+void Engine::Shader_Reload(ShaderAsset *shader) {
+    UnloadShader(shader->shader);
+    shader->shader = LoadShader(shader->vsPath, shader->fsPath);
+    for (auto light : *ctx->rp->ctx->lights) {
+        int index = light->index;
+        shader->InitLocs(index);
+    }
+}
 #pragma endregion
 
 #pragma region Font

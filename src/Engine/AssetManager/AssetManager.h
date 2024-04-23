@@ -21,7 +21,9 @@ public:
 
     ShaderAsset *LoadShader(const char *name, const char *vsPath, const char *fsPath);
     ShaderAsset *GetShader(unsigned int id);
+    ShaderAsset *GetShader(const char *name);
     void UnloadShader(unsigned int id);
+    void UnloadShader(const char *name);
 
     FontAsset *LoadFont(const char *path);
     FontAsset *LoadFontWithUTF8(const char *path, int size, const char *unicodeText);

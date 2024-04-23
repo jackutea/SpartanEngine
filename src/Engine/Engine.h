@@ -43,6 +43,7 @@ public:
 
 #pragma region Shader
     ShaderAsset* Shader_Load(const char* name, const char* vsPath, const char* fsPath);
+    void Shader_Reload(ShaderAsset* shader);
 #pragma endregion
 
 #pragma region Font

@@ -5,6 +5,9 @@
 class ShaderAsset {
 public:
     unsigned int id;
+    char *name;
+    char *vsPath;
+    char *fsPath;
     Shader shader;
 
     // Shader locations
@@ -16,9 +19,6 @@ public:
     int lit_attenuationLoc;
     int lit_countLoc;
     int ambientLoc;
-
-private:
-    char *name;
 
 public:
     ShaderAsset();

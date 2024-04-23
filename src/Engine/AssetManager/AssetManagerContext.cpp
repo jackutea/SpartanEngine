@@ -9,6 +9,7 @@ AssetManagerContext::AssetManagerContext() {
 
     shaderIDRecord = 0;
     shaders = new unordered_map<unsigned int, ShaderAsset *>(100);
+    shadersByString = new unordered_map<const char *, ShaderAsset *>(100);
 
     fontIDRecord = 0;
     fonts = new unordered_map<int, FontAsset *>(100);
@@ -34,7 +35,9 @@ AssetManagerContext::~AssetManagerContext() {
         delete shader.second;
     }
     shaders->clear();
+    shadersByString->clear();
     delete shaders;
+    delete shadersByString;
 
     // - Release all fonts
     for (auto &font : *fonts) {
