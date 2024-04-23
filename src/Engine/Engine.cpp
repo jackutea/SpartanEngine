@@ -93,14 +93,14 @@ CameraModel *Engine::Camera_GetMain() {
 
 #pragma region Model
 ModelAsset *Engine::Model_Load(const char *name, const char *path) {
-    ModelAsset *model = ctx->assetManager->LoadModel(name, path);
+    ModelAsset *model = ctx->assetManager->Model_Load(name, path);
     return model;
 }
 #pragma endregion
 
 #pragma region Texture
 TextureAsset *Engine::Texture_Load(const char *name, const char *path) {
-    TextureAsset *texture = ctx->assetManager->LoadTexture(path);
+    TextureAsset *texture = ctx->assetManager->Texture_Load(path);
     return texture;
 }
 #pragma endregion
@@ -108,7 +108,7 @@ TextureAsset *Engine::Texture_Load(const char *name, const char *path) {
 #pragma region Shader
 ShaderAsset *Engine::Shader_Load(const char *name, const char *vsPath, const char *fsPath) {
 
-    ShaderAsset *shader = ctx->assetManager->LoadShader(name, vsPath, fsPath);
+    ShaderAsset *shader = ctx->assetManager->Shader_Load(name, vsPath, fsPath);
 
     for (auto light : *ctx->rp->ctx->lights) {
         int index = light->index;
@@ -131,7 +131,7 @@ void Engine::Shader_Reload(ShaderAsset *shader) {
 #pragma region Font
 FontAsset *Engine::Font_Load(const char *path) {
 
-    FontAsset *font = ctx->assetManager->LoadFont(path);
+    FontAsset *font = ctx->assetManager->Font_Load(path);
 
     FontAsset *defaultFont = ctx->fontCore->GetDefaultFont();
     if (defaultFont == nullptr) {
@@ -144,7 +144,7 @@ FontAsset *Engine::Font_Load(const char *path) {
 
 FontAsset *Engine::Font_LoadWithUTF8(const char *path, int size, const char *unicodeText) {
 
-    FontAsset *font = ctx->assetManager->LoadFontWithUTF8(path, size, unicodeText);
+    FontAsset *font = ctx->assetManager->Font_LoadWithUTF8(path, size, unicodeText);
 
     FontAsset *defaultFont = ctx->fontCore->GetDefaultFont();
     if (defaultFont == nullptr) {

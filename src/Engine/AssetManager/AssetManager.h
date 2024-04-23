@@ -11,21 +11,21 @@ public:
     AssetManager();
     ~AssetManager();
 
-    ModelAsset *LoadModel(const char *name, const char *path);
-    ModelAsset *GetModel(unsigned int id);
-    void UnloadModel(unsigned int id);
+    ModelAsset *Model_Load(const char *name, const char *path);
+    ModelAsset *Model_GetByID(unsigned int id);
+    void Model_Unload(unsigned int id);
 
-    TextureAsset *LoadTexture(const char *path);
-    TextureAsset *GetTexture(unsigned int id);
-    void UnloadTexture(unsigned int id);
+    TextureAsset *Texture_Load(const char *path);
+    TextureAsset *Texture_GetByID(unsigned int id);
+    void Texture_Unload(unsigned int id);
 
-    ShaderAsset *LoadShader(const char *name, const char *vsPath, const char *fsPath);
-    ShaderAsset *GetShader(unsigned int id);
-    ShaderAsset *GetShader(const char *name);
-    void UnloadShader(unsigned int id);
-    void UnloadShader(const char *name);
+    ShaderAsset *Shader_Load(const char *name, const char *vsPath, const char *fsPath);
+    ShaderAsset *Shader_GetByID(unsigned int id);
+    ShaderAsset *Shader_GetByName(const char *name);
+    void Shader_Unload(unsigned int id);
+    void Shader_Unload(const char *name);
 
-    FontAsset *LoadFont(const char *path);
-    FontAsset *LoadFontWithUTF8(const char *path, int size, const char *unicodeText);
-    FontAsset *GetFont(int id);
+    FontAsset *Font_Load(const char *path);
+    FontAsset *Font_LoadWithUTF8(const char *path, int size, const char *unicodeText);
+    FontAsset *Font_GetByID(int id);
 };

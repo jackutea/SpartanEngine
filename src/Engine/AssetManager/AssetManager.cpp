@@ -9,7 +9,7 @@ AssetManager::~AssetManager() {
 }
 
 // ==== Model ====
-ModelAsset *AssetManager::LoadModel(const char *name, const char *path) {
+ModelAsset *AssetManager::Model_Load(const char *name, const char *path) {
     ModelAsset *model = new ModelAsset();
     model->tf.rotation = QuaternionIdentity();
     model->tf.translation = Vector3Zero();
@@ -20,7 +20,7 @@ ModelAsset *AssetManager::LoadModel(const char *name, const char *path) {
     return model;
 }
 
-ModelAsset *AssetManager::GetModel(unsigned int id) {
+ModelAsset *AssetManager::Model_GetByID(unsigned int id) {
     if (ctx->models->count(id) == 0) {
         SLog("Model not found: %d\r\n", id);
         return nullptr;
@@ -28,7 +28,7 @@ ModelAsset *AssetManager::GetModel(unsigned int id) {
     return ctx->models->at(id);
 }
 
-void AssetManager::UnloadModel(unsigned int id) {
+void AssetManager::Model_Unload(unsigned int id) {
     if (ctx->models->count(id) == 0) {
         SLog("Model not found: %d\r\n", id);
         return;
@@ -39,7 +39,7 @@ void AssetManager::UnloadModel(unsigned int id) {
 }
 
 // ==== Texture ====
-TextureAsset *AssetManager::LoadTexture(const char *path) {
+TextureAsset *AssetManager::Texture_Load(const char *path) {
     TextureAsset *texture = new TextureAsset();
     texture->id = ctx->textureIDRecord++;
     texture->Load(path);
@@ -47,7 +47,7 @@ TextureAsset *AssetManager::LoadTexture(const char *path) {
     return texture;
 }
 
-TextureAsset *AssetManager::GetTexture(unsigned int id) {
+TextureAsset *AssetManager::Texture_GetByID(unsigned int id) {
     if (ctx->textures->count(id) == 0) {
         SLog("Texture not found: %d", id);
         return nullptr;
@@ -55,7 +55,7 @@ TextureAsset *AssetManager::GetTexture(unsigned int id) {
     return ctx->textures->at(id);
 }
 
-void AssetManager::UnloadTexture(unsigned int id) {
+void AssetManager::Texture_Unload(unsigned int id) {
     if (ctx->textures->count(id) == 0) {
         SLog("Texture not found: %d", id);
         return;
@@ -66,7 +66,7 @@ void AssetManager::UnloadTexture(unsigned int id) {
 }
 
 // ==== Shader ====
-ShaderAsset *AssetManager::LoadShader(const char *name, const char *vsPath, const char *fsPath) {
+ShaderAsset *AssetManager::Shader_Load(const char *name, const char *vsPath, const char *fsPath) {
     ShaderAsset *shader = new ShaderAsset();
     shader->Load(name, vsPath, fsPath);
     ctx->shaders->insert({shader->shader.id, shader});
@@ -74,7 +74,7 @@ ShaderAsset *AssetManager::LoadShader(const char *name, const char *vsPath, cons
     return shader;
 }
 
-ShaderAsset *AssetManager::GetShader(unsigned int id) {
+ShaderAsset *AssetManager::Shader_GetByID(unsigned int id) {
     if (ctx->shaders->count(id) == 0) {
         SLog("Shader not found: %d\r\n", id);
         return nullptr;
@@ -82,7 +82,7 @@ ShaderAsset *AssetManager::GetShader(unsigned int id) {
     return ctx->shaders->at(id);
 }
 
-ShaderAsset *AssetManager::GetShader(const char *name) {
+ShaderAsset *AssetManager::Shader_GetByName(const char *name) {
     if (ctx->shadersByString->count(name) == 0) {
         SLog("Shader not found: %s\r\n", name);
         return nullptr;
@@ -90,7 +90,7 @@ ShaderAsset *AssetManager::GetShader(const char *name) {
     return ctx->shadersByString->at(name);
 }
 
-void AssetManager::UnloadShader(unsigned int id) {
+void AssetManager::Shader_Unload(unsigned int id) {
     if (ctx->shaders->count(id) == 0) {
         SLog("Shader not found: %d\r\n", id);
         return;
@@ -101,7 +101,7 @@ void AssetManager::UnloadShader(unsigned int id) {
     delete shader;
 }
 
-void AssetManager::UnloadShader(const char *name) {
+void AssetManager::Shader_Unload(const char *name) {
     if (ctx->shadersByString->count(name) == 0) {
         SLog("Shader not found: %s\r\n", name);
         return;
@@ -113,7 +113,7 @@ void AssetManager::UnloadShader(const char *name) {
 }
 
 // ==== Font ====
-FontAsset *AssetManager::LoadFont(const char *path) {
+FontAsset *AssetManager::Font_Load(const char *path) {
     FontAsset *font = new FontAsset();
     font->id = ctx->fontIDRecord++;
     font->Load(path);
@@ -121,7 +121,7 @@ FontAsset *AssetManager::LoadFont(const char *path) {
     return font;
 }
 
-FontAsset *AssetManager::LoadFontWithUTF8(const char *path, int size, const char *unicodeText) {
+FontAsset *AssetManager::Font_LoadWithUTF8(const char *path, int size, const char *unicodeText) {
     FontAsset *font = new FontAsset();
     font->id = ctx->fontIDRecord++;
     font->LoadWithUTF8(path, size, unicodeText);
@@ -129,7 +129,7 @@ FontAsset *AssetManager::LoadFontWithUTF8(const char *path, int size, const char
     return font;
 }
 
-FontAsset *AssetManager::GetFont(int id) {
+FontAsset *AssetManager::Font_GetByID(int id) {
     if (ctx->fonts->count(id) == 0) {
         SLog("Font not found: %d\r\n", id);
         return nullptr;
