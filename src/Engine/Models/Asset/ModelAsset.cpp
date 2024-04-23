@@ -2,6 +2,7 @@
 #include <iostream>
 
 ModelAsset::ModelAsset() {
+    tf = Transform();
 }
 
 ModelAsset::~ModelAsset() {

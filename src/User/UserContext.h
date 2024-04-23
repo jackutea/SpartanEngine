@@ -5,8 +5,10 @@
 class UserContext {
 public:
     ModelAsset* model;
+    ModelAsset* model2;
     TextureAsset* tex;
     ShaderAsset* sha;
+    ShaderAsset* sha2;
 
 public:
     UserContext();

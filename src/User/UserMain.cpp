@@ -12,22 +12,31 @@ UserMain::~UserMain() {
 void UserMain::OnStart(EngineAPI* api) {
     // Model
     ModelAsset* model = api->Asset_LoadModel("Sphere", "assets/built_in/models/mesh_polyball.glb");
-    // ModelAsset* model = new ModelAsset();
-    // model->model = LoadModelFromMesh(GenMeshSphere(1, 64, 64));
+    
+    ModelAsset* model2 = api->Asset_LoadModel("Sphere", "assets/built_in/models/mesh_cube.glb");
+    // model2->model = LoadModelFromMesh(GenMeshSphere(1, 32, 32));
+
     auto tex = api->Asset_LoadTexture("white", "assets/built_in/textures/tex_white.png");
     auto sha = api->Asset_LoadShader("lit", "assets/user/glsl330/shader_vertex_lit.vs", "assets/user/glsl330/shader_vertex_lit.fs");
+    // auto sha2 = api->Asset_LoadShader("lit2", "assets/user/glsl330/shader_vertex_lit.vs", "assets/user/glsl330/shader_vertex_lit.fs");
 
     // 上各种贴图
     model->SetTexture(0, MATERIAL_MAP_DIFFUSE, tex->texture);
     model->SetShader(0, sha->shader);
 
+    model2->SetTexture(0, MATERIAL_MAP_DIFFUSE, tex->texture);
+    model2->SetShader(0, sha->shader);
+
     ctx->model = model;
+    ctx->model2 = model2;
     ctx->tex = tex;
     ctx->sha = sha;
 
     // Sky
     SkyRenderer* sky = api->RP_GetSky();
     sky->solidColor = {17, 17, 17, 255};
+
+    SLog("MOdel2 tf: %f %f %f", ctx->model2->tf.translation.x, ctx->model2->tf.translation.y, ctx->model2->tf.translation.z);
 }
 
 void UserMain::OnLogicUpdate(EngineAPI* api, float dt) {
@@ -75,6 +84,7 @@ void UserMain::OnFixLogicUpdate(EngineAPI* api, float fixdt) {
 // 添加至绘制列表
 void UserMain::OnReadyDraw(EngineAPI* api) {
     api->RP_Model_Add(ctx->model);
+    api->RP_Model_Add(ctx->model2);
 }
 
 // GUI
