@@ -12,9 +12,11 @@ UserMain::~UserMain() {
 void UserMain::OnStart(EngineAPI* api) {
     // Model
     ModelAsset* model = api->Asset_LoadModel("Sphere", "assets/built_in/models/mesh_polyball.glb");
+    SLog("Count %d\r\n", model->model.materialCount);
     
-    ModelAsset* model2 = api->Asset_LoadModel("Sphere", "assets/built_in/models/mesh_cube.glb");
+    ModelAsset* model2 = api->Asset_LoadModel("Sphere", "assets/built_in/models/mesh_polysphere.glb");
     // model2->model = LoadModelFromMesh(GenMeshSphere(1, 32, 32));
+    SLog("Count %d\r\n", model2->model.materialCount);
 
     auto tex = api->Asset_LoadTexture("white", "assets/built_in/textures/tex_white.png");
     auto sha = api->Asset_LoadShader("lit", "assets/user/glsl330/shader_vertex_lit.vs", "assets/user/glsl330/shader_vertex_lit.fs");
@@ -36,7 +38,6 @@ void UserMain::OnStart(EngineAPI* api) {
     SkyRenderer* sky = api->RP_GetSky();
     sky->solidColor = {17, 17, 17, 255};
 
-    SLog("MOdel2 tf: %f %f %f", ctx->model2->tf.translation.x, ctx->model2->tf.translation.y, ctx->model2->tf.translation.z);
 }
 
 void UserMain::OnLogicUpdate(EngineAPI* api, float dt) {
@@ -83,8 +84,8 @@ void UserMain::OnFixLogicUpdate(EngineAPI* api, float fixdt) {
 
 // 添加至绘制列表
 void UserMain::OnReadyDraw(EngineAPI* api) {
-    api->RP_Model_Add(ctx->model);
     api->RP_Model_Add(ctx->model2);
+    api->RP_Model_Add(ctx->model);
 }
 
 // GUI
