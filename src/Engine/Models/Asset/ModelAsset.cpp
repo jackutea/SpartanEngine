@@ -33,6 +33,10 @@ void ModelAsset::SetTexture(int matIndex, int texIndex, Texture2D texture) {
 }
 
 void ModelAsset::SetShader(int matIndex, Shader shader) {
+    if (model.materialCount <= matIndex) {
+        throw SPTException("ModelAsset::SetShader: matIndex out of range");
+        return;
+    }
     model.materials[matIndex].shader = shader;
 }
 

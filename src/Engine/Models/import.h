@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Consts/SPT_Unicode_CN.h"
+#include "../define.h"
 
 #include "../../../include/raylib.h"
 #include "../../../include/raymath.h"

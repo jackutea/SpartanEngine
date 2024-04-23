@@ -37,6 +37,8 @@ int main() {
         // ==== Start ====
         user->OnStart(api);
 
+    } catch(SPTException e) {
+        e.What();
     } catch (...) {
         TraceLog(LOG_ERROR, "Init Error.");
         CloseWindow();
