@@ -32,6 +32,8 @@ int GetAllFiles(char *dirPath, char *ext, FileInfo files[], int *fileCount) {
             // printf("file: %s\r\n", entry->d_name);
             FileInfo_Write(&files[*fileCount], entry->d_name, dirPath);
             (*fileCount) += 1;
+        } else if(strstr(entry->d_name, ".h") != NULL) {
+
         } else if (strcmp(entry->d_name, ".") > 0 && strcmp(entry->d_name, "..") > 0) {
             // printf("dir: %s\r\n", entry->d_name);
             char subDir[128];
@@ -53,7 +55,7 @@ int CompileC2O(char *compiler, char *ext, char *srcDir, char *buildDir) {
     int res = GetAllFiles(srcDir, ext, files, &fileCount);
 
     for (int i = 0; i < fileCount; i++) {
-        char cmd[512];
+        char cmd[256];
         FileInfo file = files[i];
         sprintf(cmd, "%s -c %s/%s -o %s/%s.o", compiler, file.dir, file.name, buildDir, file.name);
         system(cmd);
@@ -64,7 +66,7 @@ int CompileC2O(char *compiler, char *ext, char *srcDir, char *buildDir) {
     return 0;
 }
 
-// usage: prebuild.exe gcc .cpp ./src/ ./build/
+// usage: prebuild.exe g++ .cpp ./src ./build
 int main(int argc, char *argv[]) {
 
     char *compiler = argv[1];
