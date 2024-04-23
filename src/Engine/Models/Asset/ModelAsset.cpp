@@ -22,7 +22,7 @@ void ModelAsset::Draw() {
     float angle;
     Vector3 axis;
     QuaternionToAxisAngle(tf.rotation, &axis, &angle);
-    DrawModelEx(model, {0, 0, 0}, {0, 1, 0}, 0, Vector3One(), WHITE);
+    DrawModelEx(model, tf.translation, axis, angle, tf.scale, WHITE);
     // DrawCircle3D({0, 0, 0}, 1, {0, 1, 0}, 0, WHITE);
     // DrawModel(model, tf.translation, tf.scale.x, WHITE);
 }
