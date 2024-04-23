@@ -55,9 +55,9 @@ void main()
             }
 
             // - Lambert (diffuse)
-            float NdotL = dot(normal, light); // -1, 0(明暗交界线), 1
+            // float NdotL = dot(normal, light); // -1, 0(明暗交界线), 1
             // - Half-Lambert (diffuse)
-            // float NdotL = dot(normal, light) * 0.5 + 0.5; // 0, 0.5(明暗交界线), 1
+            float NdotL = dot(normal, light) * 0.5 + 0.5; // 0, 0.5(明暗交界线), 1
             NdotL = max(NdotL, 0.0); // 防止负数
             lightDot += lights[i].color.rgb*NdotL;
 
