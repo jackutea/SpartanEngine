@@ -54,22 +54,31 @@ void main()
                 light = normalize(lights[i].position - fragPosition);
             }
 
-            // - Lambert
+            // - Lambert (diffuse)
             float NdotL = dot(normal, light); // -1, 0(明暗交界线), 1
-            // - Half-Lambert
+            // - Half-Lambert (diffuse)
             // float NdotL = dot(normal, light) * 0.5 + 0.5; // 0, 0.5(明暗交界线), 1
-            NdotL = max(NdotL, 0.0);
+            NdotL = max(NdotL, 0.0); // 防止负数
             lightDot += lights[i].color.rgb*NdotL;
 
             float specCo = 0.0;
             if (NdotL > 0.0) {
-                specCo = pow(max(0.0, dot(viewD, reflect(-(light), normal))), 16.0); // 16 refers to shine
+                // specular
+                float shiness = 16.0; // 越大表面越光滑, 越小表面越粗糙
+                // - Phong
+                // vec3 reflectVec = reflect(-light, normal);
+                // specCo = pow(max(0.0, dot(viewD, reflectVec)), shiness);
+                // - Blinn-Phong (性能更好, 效果略有差别-高光弱一些)
+                vec3 halfVec = normalize(light + viewD);
+                float specCo = pow(max(0.0, dot(halfVec, normal)), shiness);
             }
             specular += specCo;
         }
     }
 
     finalColor = (texelColor*((colDiffuse + vec4(specular, 1.0))*vec4(lightDot, 1.0)));
+
+    // Ambient light
     finalColor += texelColor*(ambient/10.0)*colDiffuse;
 
     // Gamma correction
