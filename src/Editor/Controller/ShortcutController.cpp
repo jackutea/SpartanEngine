@@ -1,16 +1,17 @@
-#include "DebugCameraController.h"
+#include "ShortcutController.h"
 
-DebugCameraController::DebugCameraController() {
+ShortcutController::ShortcutController() {
 }
 
-DebugCameraController::~DebugCameraController() {
+ShortcutController::~ShortcutController() {
 }
 
-void DebugCameraController::Inject(EditorContext *ctx) {
+void ShortcutController::Inject(EditorContext *ctx) {
     this->ctx = ctx;
 }
 
-void DebugCameraController::Process(Engine *engine, float dt) {
+// When MouseRightDown, WSAD to move, mouse to rotate
+static void ProcessDebugCamera(EditorContext *ctx, Engine *engine, float dt) {
     if (IsKeyDown(KEY_LEFT_SHIFT) && IsKeyPressed(KEY_F1)) {
         ctx->isDebugCameraEnabled = !ctx->isDebugCameraEnabled;
     }
@@ -52,4 +53,16 @@ void DebugCameraController::Process(Engine *engine, float dt) {
         mainCamera->Move(Vector3Scale(move, dt));
         mainCamera->Rotate(Vector3Scale(rotate, dt));
     }
+}
+
+static void ProcessShaderReload(EditorContext *ctx, Engine *engine) {
+    if (IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_R)) {
+        engine->Shader_ReloadAll();
+    }
+}
+
+// Process shortcuts
+void ShortcutController::Process(Engine *engine, float dt) {
+    ProcessDebugCamera(ctx, engine, dt);
+    ProcessShaderReload(ctx, engine);
 }

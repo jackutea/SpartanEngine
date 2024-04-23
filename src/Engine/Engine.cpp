@@ -126,6 +126,13 @@ void Engine::Shader_Reload(ShaderAsset *shader) {
         shader->InitLocs(index);
     }
 }
+
+void Engine::Shader_ReloadAll() {
+    for (auto &kv : *ctx->assetManager->ctx->shaders) {
+        ShaderAsset *shader = kv.second;
+        Shader_Reload(shader);
+    }
+}
 #pragma endregion
 
 #pragma region Font

@@ -3,13 +3,13 @@
 #include "../EditorContext.h"
 #include "../import.h"
 
-class DebugCameraController {
+class ShortcutController {
 private:
     EditorContext *ctx;
 
 public:
-    DebugCameraController();
-    ~DebugCameraController();
+    ShortcutController();
+    ~ShortcutController();
     void Inject(EditorContext *ctx);
     void Process(Engine *engine, float dt);
 };

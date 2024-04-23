@@ -49,11 +49,6 @@ void UserMain::OnLogicUpdate(EngineAPI* api, float dt) {
     CameraModel* camera = api->Camera_GetMain();
     // camera->Move({0, 0, 1*dt});
 
-    if (IsKeyPressed(KEY_O)) {
-        api->Asset_ReloadShader(ctx->sha);
-        ctx->model->SetShader(0, ctx->sha->shader);
-    }
-
     // 2. Normal Logic Tick
     LightRenderer* light = api->RP_GetMainLight();
     if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {

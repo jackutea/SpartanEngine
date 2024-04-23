@@ -30,6 +30,10 @@ void EngineAPI::Asset_ReloadShader(ShaderAsset* shader) {
     engine->Shader_Reload(shader);
 }
 
+void EngineAPI::Asset_ReloadAllShader() {
+    engine->Shader_ReloadAll();
+}
+
 FontAsset* EngineAPI::Asset_LoadFont(const char* path) {
     return engine->Font_Load(path);
 }

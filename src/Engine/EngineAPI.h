@@ -17,6 +17,7 @@ public:
     TextureAsset* Asset_LoadTexture(const char* name, const char* path);
     ShaderAsset* Asset_LoadShader(const char* name, const char* vsPath, const char* fsPath);
     void Asset_ReloadShader(ShaderAsset* shader);
+    void Asset_ReloadAllShader();
     FontAsset* Asset_LoadFont(const char* path);
 
     // ==== Font ====
