@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Engine.h"
-#include "Consts/export.h"
+#include "Consts/SPT_Unicode_CN.h"
 
 Engine::Engine() {
     ctx = new EngineContext();
@@ -29,6 +29,8 @@ void Engine::LogicTick(float dt) {
 }
 
 void Engine::Render() {
+
+    SetConfigFlags(FLAG_MSAA_4X_HINT);
 
     // [ Camera Mode Begin
     ctx->cameraManager->Begin();

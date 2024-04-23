@@ -14,10 +14,18 @@
 - Render Pipeline
     - Camera
     - Light
+        - Shadow
+        - Directional
+        - Point
+        - Spot
     - Opaque Model
     - Skybox
+        - Atmospheric scattering
+        - HDRI
     - Transparent Model
+    - PP
     - UI
+    - Video Player
 - UI System
     - Widget
         - Layout

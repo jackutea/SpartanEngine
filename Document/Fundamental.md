@@ -1,12 +1,28 @@
+==== Platform ====
+```
+- Multiplatform: Windows, Linux, MacOS, Android, HTML5.
+```
+
+==== Linear ====
+- 3D Right-Hand: x=-1 means right, y=1 means up, z=1 means forward
+- 2D: x=1 means right, y=1 means down
+
 ==== Asset ====
 - Notice: 加载资源必须在 InitWindow 后
 ```
-- font: .ttf
-- 3DModel: .obj .glb .gltf .m3d
+- Font: .ttf
+- Image: .png | .jpg | .hdr | .bmp | .tga
+- 3D Model: .obj | .glb | .gltf | .m3d | .mtl
+- Shader: .vs | .fs
+- Audio: .wav | .mp3 | .flac | .ogg
 ```
 
 ==== Shader ====
+```
+- OpenGL: 1.1, 2.1, 3.3, 4.3 or ES2
+```
 ``` C
+// Raylib Internal
 // Default shader vertex attribute names to set location points
 // NOTE: When a new shader is loaded, the following locations are tried to be set for convenience
 #define RL_DEFAULT_SHADER_ATTRIB_NAME_POSITION     "vertexPosition"    // Bound by default to shader location: 0
@@ -28,7 +44,10 @@
 ```
 
 ``` c
-// SpartanEngine
+// SpartanEngine Internal
+#define LIGHT_DIRECTIONAL       0
+#define LIGHT_POINT             1
+
 struct Light {
     int enabled;
     int type;

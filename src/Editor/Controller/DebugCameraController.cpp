@@ -23,7 +23,7 @@ void DebugCameraController::Process(Engine *engine, float dt) {
         float *multiply = &ctx->debugCameraSpeedMultiply;
         float wheel = GetMouseWheelMove();
         *multiply += wheel * 60 * dt;
-        float rotateSpeed = 50 * (*multiply);
+        float rotateSpeed = 50;
         float xMoveSpeed = 4 * (*multiply);
         float zMoveSpeed = 10 * (*multiply);
 

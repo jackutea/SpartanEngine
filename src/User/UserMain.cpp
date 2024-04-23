@@ -29,8 +29,8 @@ void UserMain::OnStart(EngineAPI* api) {
 void UserMain::OnLogicUpdate(EngineAPI* api, float dt) {
 
     // 1. Process Input
-    // cam->Rotate({1 * dt, 1 * dt, 0});
-    float off = (float)sin(GetTime()) * 2;
+    CameraModel* camera = api->Camera_GetMain();
+    // camera->Move({0, 0, 1*dt});
 
     // 2. Normal Logic Tick
     LightRenderer* light = api->RP_GetMainLight();
@@ -39,10 +39,6 @@ void UserMain::OnLogicUpdate(EngineAPI* api, float dt) {
         light->pos.x += mouseDelta.x * 0.01f;
         light->pos.y -= mouseDelta.y * 0.01f;
     }
-
-    // CameraModel* cam = api->GetMainCamera();
-    // cam->MoveTo({off, off, 0});
-    // cam->Rotate({off * .5f, off * .5f, 0});
 
     // 3. Fix Logic Tick
     float fixInterval = UserSetting::FIXED_TIME_STEP;
@@ -59,6 +55,9 @@ void UserMain::OnLogicUpdate(EngineAPI* api, float dt) {
 }
 
 void UserMain::OnFixLogicUpdate(EngineAPI* api, float fixdt) {
+    // Fixed Logic Tick
+
+    // Physics Simulation
 }
 
 // 添加至绘制列表
