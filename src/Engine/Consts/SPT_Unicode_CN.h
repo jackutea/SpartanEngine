@@ -1,4 +1,6 @@
-#pragma once
+#ifndef ENGINE_CONSTS_SPTUNICODECN_EXPORT_H__
+#define ENGINE_CONSTS_SPTUNICODECN_EXPORT_H__
+
 #include <iostream>
 using namespace std::string_literals;
 
@@ -74,3 +76,5 @@ static auto cn = u8"!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHI\nJKLMNOPQRSTUVWXY
           u8"饮饰饱饲饵饶饺饼饿馁馅馆馋馍馏馒首香马驮驯驰驱驳驴驶驹驻驼驾骂骄骆骇验骏骑骗骚骡骤骨髓高鬓鬼魁魂魄魏"
           u8"魔鱼鲁鲜鲤鲫鲸鳄鳍鳖鳞鸟鸠鸡鸣鸥鸦鸭鸯鸳鸵鸽鸿鹃鹅鹉鹊鹏鹤鹦鹰鹿麦麸麻黄黍黎黑黔默鼎鼓鼠鼻齐齿龄龙龟";
 }
+
+#endif // ENGINE_CONSTS_SPTUNICODECN_EXPORT_H__

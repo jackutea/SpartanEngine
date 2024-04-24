@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_MODEL_CAMERA_MODEL_H__
+#define ENGINE_MODEL_CAMERA_MODEL_H__
 
 #include "../import.h"
 
@@ -26,3 +27,5 @@ public:
     void Begin();
     void End();
 };
+
+#endif // ENGINE_MODEL_CAMERA_MODEL_H__

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_MODEL_MODEL_ASSET_H__
+#define ENGINE_MODEL_MODEL_ASSET_H__
 
 #include "../import.h"
 
@@ -18,3 +19,5 @@ public:
     void SetShader(int matIndex, Shader shader);
     void Log();
 };
+
+#endif // ENGINE_MODEL_MODEL_ASSET_H__

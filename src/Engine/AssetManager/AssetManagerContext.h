@@ -1,4 +1,6 @@
-#pragma once
+#ifndef ENGINE_ASSETMANAGER_ASSETMANAGERCONTEXT_H__
+#define ENGINE_ASSETMANAGER_ASSETMANAGERCONTEXT_H__
+
 #include <iostream>
 #include <vector>
 #include <unordered_map>
@@ -27,3 +29,5 @@ public:
     AssetManagerContext();
     ~AssetManagerContext();
 };
+
+#endif // ENGINE_ASSETMANAGER_ASSETMANAGERCONTEXT_H__

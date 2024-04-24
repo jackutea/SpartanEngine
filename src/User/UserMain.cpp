@@ -12,11 +12,9 @@ UserMain::~UserMain() {
 void UserMain::OnStart(EngineAPI* api) {
     // Model
     ModelAsset* model = api->Asset_LoadModel("Sphere", "assets/built_in/models/mesh_polyball.glb");
-    SLog("Count %d\r\n", model->model.materialCount);
     
     ModelAsset* model2 = api->Asset_LoadModel("Sphere", "assets/built_in/models/mesh_polysphere.glb");
     // model2->model = LoadModelFromMesh(GenMeshSphere(1, 32, 32));
-    SLog("Count %d\r\n", model2->model.materialCount);
 
     auto tex = api->Asset_LoadTexture("white", "assets/built_in/textures/tex_white.png");
     auto sha = api->Asset_LoadShader("lit", "assets/user/glsl330/shader_vertex_lit.vs", "assets/user/glsl330/shader_vertex_lit.fs");

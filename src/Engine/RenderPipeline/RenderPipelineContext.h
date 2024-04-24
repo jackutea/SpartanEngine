@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_RENDERPIPELINE_RENDERPIPELINECONTEXT_H__
+#define ENGINE_RENDERPIPELINE_RENDERPIPELINECONTEXT_H__
 
 #include <vector>
 #include "../AssetManager/AssetManager.h"
@@ -19,3 +20,5 @@ public:
 
     LightRenderer* GetMainLight();
 };
+
+#endif // ENGINE_RENDERPIPELINE_RENDERPIPELINECONTEXT_H__

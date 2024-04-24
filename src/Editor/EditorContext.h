@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_EDITOR_EDITORCONTEXT_H__
+#define ENGINE_EDITOR_EDITORCONTEXT_H__
 
 class EditorContext {
 public:
@@ -9,3 +10,5 @@ public:
     EditorContext();
     ~EditorContext();
 };
+
+#endif // ENGINE_EDITOR_EDITORCONTEXT_H__

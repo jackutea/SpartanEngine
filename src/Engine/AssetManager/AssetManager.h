@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_ASSETMANAGER_ASSETMANAGER_H__
+#define ENGINE_ASSETMANAGER_ASSETMANAGER_H__
 
 #include "import.h"
 #include "AssetManagerContext.h"
@@ -29,3 +30,5 @@ public:
     FontAsset *Font_LoadWithUTF8(const char *path, int size, const char *unicodeText);
     FontAsset *Font_GetByID(int id);
 };
+
+#endif // ENGINE_ASSETMANAGER_ASSETMANAGER_H__

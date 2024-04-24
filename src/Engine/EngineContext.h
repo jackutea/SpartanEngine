@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_ENGINECONTEXT_H__
+#define ENGINE_ENGINECONTEXT_H__
 
 #include "AssetManager/AssetManager.h"
 #include "RenderPipeline/RenderPipeline.h"
@@ -17,3 +18,5 @@ public:
     EngineContext();
     ~EngineContext();
 };
+
+#endif // ENGINE_ENGINECONTEXT_H__

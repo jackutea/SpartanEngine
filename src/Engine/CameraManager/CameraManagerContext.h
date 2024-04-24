@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_CAMERAMANAGER_CAMERAMANAGERCONTEXT_H__
+#define ENGINE_CAMERAMANAGER_CAMERAMANAGERCONTEXT_H__
 
 #include "import.h"
 #include <unordered_map>
@@ -16,3 +17,5 @@ public:
     CameraModel* GetMainCamera();
     void SetMainCamera(CameraModel* camera);
 };
+
+#endif // ENGINE_CAMERAMANAGER_CAMERAMANAGERCONTEXT_H__

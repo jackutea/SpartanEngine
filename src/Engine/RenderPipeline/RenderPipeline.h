@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_RENDERPIPELINE_RENDERPIPELINE_H__
+#define ENGINE_RENDERPIPELINE_RENDERPIPELINE_H__
 
 #include "import.h"
 #include "RenderPipelineContext.h"
@@ -23,3 +24,5 @@ protected:
     void Sky_Render(CameraModel& cam) const;
     void Model_Render(CameraModel& cam);
 };
+
+#endif // ENGINE_RENDERPIPELINE_RENDERPIPELINE_H__

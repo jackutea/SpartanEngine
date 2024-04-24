@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_ENGINEAPI_H__
+#define ENGINE_ENGINEAPI_H__
 
 #include "Engine.h"
 
@@ -32,3 +33,5 @@ public:
     SkyRenderer* RP_GetSky();
     void RP_Model_Add(ModelAsset* model);
 };
+
+#endif // ENGINE_ENGINEAPI_H__

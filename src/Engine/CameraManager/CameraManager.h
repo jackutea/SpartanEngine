@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_CAMERAMANAGER_EXPORT_H__
+#define ENGINE_CAMERAMANAGER_EXPORT_H__
 
 #include "CameraManagerContext.h"
 
@@ -16,3 +17,5 @@ public:
     void Begin() const;
     void End() const;
 };
+
+#endif // ENGINE_CAMERAMANAGER_EXPORT_H__

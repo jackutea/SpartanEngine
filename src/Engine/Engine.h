@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_ENGINE_H__
+#define ENGINE_ENGINE_H__
 
 #include "EngineContext.h"
 #include "Domain/export.h"
@@ -58,3 +59,5 @@ public:
     void RP_Model_Add(ModelAsset* model);
 #pragma endregion
 };
+
+#endif // ENGINE_ENGINE_H__

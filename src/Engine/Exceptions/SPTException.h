@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SPT_EXCEPTION_H__
+#define SPT_EXCEPTION_H__
 
 #include <iostream>
 
@@ -11,3 +12,5 @@ public:
     ~SPTException();
     void What() const;
 };
+
+#endif // SPT_EXCEPTION_H__

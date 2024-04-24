@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_MODEL_SHADER_ASSET_H__
+#define ENGINE_MODEL_SHADER_ASSET_H__
 
 #include "../import.h"
 
@@ -29,3 +30,4 @@ public:
     void InitLocs(int lightIndex);
     void SetValue(int locIndex, void *value, int uniformType);
 };
+#endif // ENGINE_MODEL_SHADER_ASSET_H__

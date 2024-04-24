@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_UIMANAGER_UIMANAGERCONTEXT_H__
+#define ENGINE_UIMANAGER_UIMANAGERCONTEXT_H__
 
 #include "import.h"
 
@@ -7,3 +8,5 @@ public:
     UIManagerContext();
     ~UIManagerContext();
 };
+
+#endif // ENGINE_UIMANAGER_UIMANAGERCONTEXT_H__

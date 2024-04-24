@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_UIMANAGER_UIMANAGER_H__
+#define ENGINE_UIMANAGER_UIMANAGER_H__
 
 #include "UIManagerContext.h"
 
@@ -11,3 +12,5 @@ public:
     ~UIManager();
     void ProcessAndRender();
 };
+
+#endif // ENGINE_UIMANAGER_UIMANAGER_H__

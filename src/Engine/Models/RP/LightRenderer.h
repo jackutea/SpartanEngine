@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_MODEL_LIGHT_RENDERER_H__
+#define ENGINE_MODEL_LIGHT_RENDERER_H__
 
 #include "../import.h"
 
@@ -16,3 +17,5 @@ public:
     LightRenderer();
     ~LightRenderer();
 };
+
+#endif // ENGINE_MODEL_LIGHT_RENDERER_H__

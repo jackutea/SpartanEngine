@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_MODEL_TEXTURE_ASSET_H__
+#define ENGINE_MODEL_TEXTURE_ASSET_H__
 
 #include "../import.h"
 
@@ -13,3 +14,5 @@ public:
     unsigned int GetID();
     void Load(const char *path);
 };
+
+#endif // ENGINE_MODEL_TEXTURE_ASSET_H__

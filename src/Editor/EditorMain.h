@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINE_EDITOR_EDITORMAIN_H__
+#define ENGINE_EDITOR_EDITORMAIN_H__
 
 #include "EditorContext.h"
 #include "Controller/ShortcutController.h"
@@ -18,3 +19,5 @@ public:
     void ProcessUserInterface(float dt);
     void OnReadyDraw();
 };
+
+#endif // ENGINE_EDITOR_EDITORMAIN_H__
