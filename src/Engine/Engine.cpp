@@ -23,7 +23,7 @@ void Engine::Initialize() {
     ctx->rp->Initialize();
     SkyRenderer *sky = Sky_GetMain();
     sky->skyboxModel = ctx->assetManager->Model_Load("Skybox", "assets/built_in/models/mesh_cube.glb");
-    // sky->skyboxModel->tf.scale = {100, 100, 100};
+    sky->skyboxModel->tf.scale = {1, 1, 1};
 }
 
 void Engine::LogicTick(float dt) {
