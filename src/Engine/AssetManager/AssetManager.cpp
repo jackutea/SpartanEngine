@@ -50,7 +50,15 @@ TextureAsset *AssetManager::Texture_Load(const char *path) {
 TextureAsset *AssetManager::Texture_LoadCubemap(const char *name, const char *path) {
     TextureAsset *texture = new TextureAsset();
     texture->id = ctx->textureIDRecord++;
-    texture->LoadCubemapVertical(name, path);
+    texture->LoadCubemap_SPT(name, path);
+    ctx->textures->insert({texture->id, texture});
+    return texture;
+}
+
+TextureAsset *AssetManager::Texture_LoadCubemapHDRI(Shader shader, int size, int e_PIXELFORMAT, const char *name, const char *path) {
+    TextureAsset *texture = new TextureAsset();
+    texture->id = ctx->textureIDRecord++;
+    texture->LoadCubemapHDRI(shader, size, e_PIXELFORMAT, name, path);
     ctx->textures->insert({texture->id, texture});
     return texture;
 }
@@ -74,9 +82,9 @@ void AssetManager::Texture_Unload(unsigned int id) {
 }
 
 // ==== Shader ====
-ShaderAsset *AssetManager::Shader_Load(const char *name, const char *vsPath, const char *fsPath) {
+ShaderAsset *AssetManager::Shader_Load(RPShaderType type, const char *name, const char *vsPath, const char *fsPath) {
     ShaderAsset *shader = new ShaderAsset();
-    shader->Load(name, vsPath, fsPath);
+    shader->Load(type, name, vsPath, fsPath);
     ctx->shaders->insert({shader->shader.id, shader});
     ctx->shadersByString->insert({name, shader});
     return shader;

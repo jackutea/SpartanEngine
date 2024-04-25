@@ -22,7 +22,10 @@ const char *ShaderAsset::GetName() {
     return name;
 }
 
-void ShaderAsset::Load(const char *name, const char *vsPath, const char *fsPath) {
+void ShaderAsset::Load(RPShaderType type, const char *name, const char *vsPath, const char *fsPath) {
+
+    this->type = type;
+
     this->name = new char[strlen(name) + 1];
     strcpy(this->name, name);
 

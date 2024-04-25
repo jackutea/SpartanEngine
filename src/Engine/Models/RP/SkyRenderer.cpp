@@ -1,4 +1,5 @@
 #include "SkyRenderer.h"
+#include "../Asset/ModelAsset.h"
 
 SkyRenderer::SkyRenderer() {
     skyType = RPSkyType::None;
@@ -7,4 +8,7 @@ SkyRenderer::SkyRenderer() {
 }
 
 SkyRenderer::~SkyRenderer() {
+    if (skyboxModel != nullptr) {
+        delete skyboxModel;
+    }
 }

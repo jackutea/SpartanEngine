@@ -2,20 +2,19 @@
 
 CameraModel::CameraModel() {
     type = CameraType::Camera3D;
-    
+
     cam3D = {0};
-    cam3D.position = (Vector3){ 10.0f, 10.0f, 10.0f };
-    cam3D.target = (Vector3){ 0.0f, 0.0f, 0.0f };
-    cam3D.up = (Vector3){ 0.0f, 1.0f, 0.0f };
+    cam3D.position = (Vector3){10.0f, 10.0f, 10.0f};
+    cam3D.target = (Vector3){0.0f, 0.0f, 0.0f};
+    cam3D.up = (Vector3){0.0f, 1.0f, 0.0f};
     cam3D.fovy = 45.0f;
     cam3D.projection = CAMERA_PERSPECTIVE;
 
     cam2D = {0};
-    cam2D.offset = (Vector2){ 0.0f, 0.0f };
-    cam2D.target = (Vector2){ 0.0f, 0.0f };
+    cam2D.offset = (Vector2){0.0f, 0.0f};
+    cam2D.target = (Vector2){0.0f, 0.0f};
     cam2D.rotation = 0.0f;
     cam2D.zoom = 1.0f;
-
 }
 
 CameraModel::~CameraModel() {
@@ -43,7 +42,7 @@ Vector3 CameraModel::GetTarget() {
 
 Vector3 CameraModel::GetForward() {
     if (type == CameraType::Camera3D) {
-        return Vector3Normalize(Vector3Subtract(cam3D.target, cam3D.position));
+        return Vector3Normalize(cam3D.target - cam3D.position);
     } else if (type == CameraType::Camera2D) {
         return (Vector3){0.0f, 0.0f, 1.0f};
     } else {
@@ -53,8 +52,8 @@ Vector3 CameraModel::GetForward() {
 
 void CameraModel::Move(Vector3 offset) {
     if (type == CameraType::Camera3D) {
-        cam3D.position = Vector3Add(cam3D.position, offset);
-        cam3D.target = Vector3Add(cam3D.target, offset);
+        cam3D.position = cam3D.position + offset;
+        cam3D.target = cam3D.target + offset;
     } else if (type == CameraType::Camera2D) {
         cam2D.offset = Vector2Add(cam2D.offset, (Vector2){offset.x, offset.y});
     }
@@ -68,11 +67,20 @@ void CameraModel::MoveTo(Vector3 target) {
     }
 }
 
-void CameraModel::Rotate(Vector3 offset) {
+void CameraModel::Rotate(Vector2 offset) {
     if (type == CameraType::Camera3D) {
-        cam3D.target = Vector3Add(cam3D.target, offset);
+        // offset means the amount of degrees to rotate
+        Vector3 dir = Vector3Normalize(cam3D.target - cam3D.position);
+        Vector3 right = Vector3Normalize(Vector3CrossProduct(dir, cam3D.up));
+        Vector3 up = Vector3Normalize(Vector3CrossProduct(right, dir));
+
+        Matrix rot = MatrixRotate(right, DEG2RAD * offset.y);
+        rot = MatrixMultiply(rot, MatrixRotate(up, DEG2RAD * offset.x));
+
+        cam3D.target = Vector3Add(cam3D.position, Vector3Transform(cam3D.target - cam3D.position, rot));
+
     } else if (type == CameraType::Camera2D) {
-        cam2D.target = Vector2Add(cam2D.target, (Vector2){offset.x, offset.y});
+        cam2D.target = cam2D.target + offset;
     }
 }
 

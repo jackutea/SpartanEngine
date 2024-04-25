@@ -1,5 +1,7 @@
 #include "RenderPipeline.h"
 
+#define RLGL_IMPLEMENTATION
+
 RenderPipeline::RenderPipeline() {
     ctx = new RenderPipelineContext();
 }
@@ -19,6 +21,7 @@ void RenderPipeline::Initialize() {
 }
 
 void RenderPipeline::RenderAll(CameraModel& cam) {
+    SkyRenderer* sky = ctx->sky;
     // Light
     // View
     Sky_Render(cam);
@@ -49,6 +52,14 @@ void RenderPipeline::Sky_Render(CameraModel& cam) const {
     if (sky->skyType == RPSkyType::SolidColor) {
         // Render solid sky
         ClearBackground(sky->solidColor);
+    } else if (sky->skyType == RPSkyType::Cubemap) {
+        // Render cubemap sky
+        ClearBackground(sky->solidColor);
+        rlDisableBackfaceCulling();
+        rlDisableDepthMask();
+        sky->skyboxModel->Draw();
+        rlEnableBackfaceCulling();
+        rlEnableDepthMask();
     }
 }
 

@@ -41,10 +41,11 @@ public:
 #pragma region Texture
     TextureAsset* Texture_Load(const char* name, const char* path);
     TextureAsset* Texture_LoadCubemap(const char* name, const char* path);
+    TextureAsset* Texture_LoadCubemapHDRI(Shader shader, int size, int e_PIXELFORMAT, const char* name, const char* path);
 #pragma endregion
 
 #pragma region Shader
-    ShaderAsset* Shader_Load(const char* name, const char* vsPath, const char* fsPath);
+    ShaderAsset* Shader_Load(RPShaderType type, const char* name, const char* vsPath, const char* fsPath);
     void Shader_Reload(ShaderAsset* shader);
     void Shader_ReloadAll();
 #pragma endregion

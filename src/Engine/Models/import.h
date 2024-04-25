@@ -2,6 +2,7 @@
 #define ENGINE_MODELS_IMPORT_H__
 
 #include "../define.h"
+#include "../RaylibExtention/VectorExtention.h"
 
 #include "../../../include/raylib.h"
 #include "../../../include/raymath.h"

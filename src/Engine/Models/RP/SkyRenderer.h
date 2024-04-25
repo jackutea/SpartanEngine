@@ -3,11 +3,14 @@
 
 #include "../import.h"
 
+class ModelAsset;
+
 class SkyRenderer {
 public:
     RPSkyType skyType;
     Color solidColor;
     Color ambientColor;
+    ModelAsset *skyboxModel;
 
 public:
     SkyRenderer();

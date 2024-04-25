@@ -18,7 +18,7 @@ public:
     Vector3 GetForward();
     void Move(Vector3 offset);
     void MoveTo(Vector3 target);
-    void Rotate(Vector3 offset);
+    void Rotate(Vector2 offset);
     void RotateFaceTo(Vector3 target);
     void ZoomFOV(float offset);
     void ZoomFOVTo(float target);

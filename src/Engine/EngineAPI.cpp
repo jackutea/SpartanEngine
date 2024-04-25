@@ -26,8 +26,12 @@ TextureAsset* EngineAPI::Asset_LoadCubemapTexture(const char* name, const char* 
     return engine->Texture_LoadCubemap(name, path);
 }
 
-ShaderAsset* EngineAPI::Asset_LoadShader(const char* name, const char* vsPath, const char* fsPath) {
-    return engine->Shader_Load(name, vsPath, fsPath);
+TextureAsset* EngineAPI::Asset_LoadCubemapHDRI(Shader shader, int size, int e_PIXELFORMAT, const char* name, const char* path) {
+    return engine->Texture_LoadCubemapHDRI(shader, size, e_PIXELFORMAT, name, path);
+}
+
+ShaderAsset* EngineAPI::Asset_LoadShader(RPShaderType type, const char* name, const char* vsPath, const char* fsPath) {
+    return engine->Shader_Load(type, name, vsPath, fsPath);
 }
 
 void EngineAPI::Asset_ReloadShader(ShaderAsset* shader) {

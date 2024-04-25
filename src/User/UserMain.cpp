@@ -11,16 +11,16 @@ UserMain::~UserMain() {
 
 void UserMain::OnStart(EngineAPI* api) {
     // Model
-    ModelAsset* model = api->Asset_LoadModel("Sphere", "assets/built_in/models/mesh_polyball.glb");
-    
-    ModelAsset* model2 = api->Asset_LoadModel("Sphere", "assets/built_in/models/mesh_cube.glb");
-    // model2->model = LoadModelFromMesh(GenMeshSphere(1, 32, 32));
+    ModelAsset* model = api->Asset_LoadModel("Sphere1", "assets/built_in/models/mesh_polyball.glb");
 
-    auto tex = api->Asset_LoadTexture("white", "assets/built_in/textures/tex_white.png");
-    auto tex2 = api->Asset_LoadCubemapTexture("white", "assets/built_in/textures/tex_cubemap.png");
+    SkyRenderer* sky = api->RP_GetSky();
+    ModelAsset* model2 = sky->skyboxModel;
 
-    auto sha = api->Asset_LoadShader("lit", "assets/user/glsl330/shader_vertex_lit.vs", "assets/user/glsl330/shader_vertex_lit.fs");
-    auto sha2 = api->Asset_LoadShader("lit2", "assets/user/glsl330/shader_skybox.vs", "assets/user/glsl330/shader_skybox.fs");
+    auto sha = api->Asset_LoadShader(RPShaderType::Lit, "lit1", "assets/user/glsl330/shader_vertex_lit.vs", "assets/user/glsl330/shader_vertex_lit.fs");
+    auto tex = api->Asset_LoadTexture("white1", "assets/built_in/textures/tex_white.png");
+
+    auto sha2 = api->Asset_LoadShader(RPShaderType::Sky_Cubemap, "lit2", "assets/user/glsl330/shader_skybox.vs", "assets/user/glsl330/shader_skybox.fs");
+    auto tex2 = api->Asset_LoadCubemapTexture("white2", "assets/built_in/textures/skybox.png");
 
     // 上各种贴图
     model->SetTexture(0, MATERIAL_MAP_DIFFUSE, tex->texture);
@@ -28,6 +28,8 @@ void UserMain::OnStart(EngineAPI* api) {
 
     model2->SetTexture(0, MATERIAL_MAP_CUBEMAP, tex2->texture);
     model2->SetShader(0, sha2->shader);
+    int envMap = MATERIAL_MAP_CUBEMAP;
+    SetShaderValue(model2->model.materials[0].shader, GetShaderLocation(model2->model.materials[0].shader, "environmentMap"), &envMap, SHADER_UNIFORM_INT);
 
     ctx->model = model;
     ctx->model2 = model2;
@@ -36,9 +38,8 @@ void UserMain::OnStart(EngineAPI* api) {
     ctx->sha = sha;
 
     // Sky
-    SkyRenderer* sky = api->RP_GetSky();
     sky->solidColor = {17, 17, 17, 255};
-
+    sky->skyType = RPSkyType::Cubemap;
 }
 
 void UserMain::OnLogicUpdate(EngineAPI* api, float dt) {
@@ -80,7 +81,6 @@ void UserMain::OnFixLogicUpdate(EngineAPI* api, float fixdt) {
 
 // 添加至绘制列表
 void UserMain::OnReadyDraw(EngineAPI* api) {
-    api->RP_Model_Add(ctx->model2);
     api->RP_Model_Add(ctx->model);
 }
 

@@ -17,7 +17,8 @@ public:
     ModelAsset* Asset_LoadModel(const char* name, const char* path);
     TextureAsset* Asset_LoadTexture(const char* name, const char* path);
     TextureAsset* Asset_LoadCubemapTexture(const char* name, const char* path);
-    ShaderAsset* Asset_LoadShader(const char* name, const char* vsPath, const char* fsPath);
+    TextureAsset* Asset_LoadCubemapHDRI(Shader shader, int size, int e_PIXELFORMAT, const char* name, const char* path);
+    ShaderAsset* Asset_LoadShader(RPShaderType type, const char* name, const char* vsPath, const char* fsPath);
     void Asset_ReloadShader(ShaderAsset* shader);
     void Asset_ReloadAllShader();
     FontAsset* Asset_LoadFont(const char* path);

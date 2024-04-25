@@ -1,6 +1,7 @@
 #ifndef ENGINE_ENGINECONTEXT_H__
 #define ENGINE_ENGINECONTEXT_H__
 
+#include "RaylibExtention/VectorExtention.h"
 #include "AssetManager/AssetManager.h"
 #include "RenderPipeline/RenderPipeline.h"
 #include "UIManager/UIManager.h"

@@ -21,6 +21,9 @@ void Engine::Initialize() {
 
     // RP: MainLight, Sky
     ctx->rp->Initialize();
+    SkyRenderer *sky = Sky_GetMain();
+    sky->skyboxModel = ctx->assetManager->Model_Load("Skybox", "assets/built_in/models/mesh_cube.glb");
+    // sky->skyboxModel->tf.scale = {100, 100, 100};
 }
 
 void Engine::LogicTick(float dt) {
@@ -108,12 +111,17 @@ TextureAsset *Engine::Texture_LoadCubemap(const char *name, const char *path) {
     TextureAsset *texture = ctx->assetManager->Texture_LoadCubemap(name, path);
     return texture;
 }
+
+TextureAsset *Engine::Texture_LoadCubemapHDRI(Shader shader, int size, int e_PIXELFORMAT, const char *name, const char *path) {
+    TextureAsset *texture = ctx->assetManager->Texture_LoadCubemapHDRI(shader, size, e_PIXELFORMAT, name, path);
+    return texture;
+}
 #pragma endregion
 
 #pragma region Shader
-ShaderAsset *Engine::Shader_Load(const char *name, const char *vsPath, const char *fsPath) {
+ShaderAsset *Engine::Shader_Load(RPShaderType type, const char *name, const char *vsPath, const char *fsPath) {
 
-    ShaderAsset *shader = ctx->assetManager->Shader_Load(name, vsPath, fsPath);
+    ShaderAsset *shader = ctx->assetManager->Shader_Load(type, name, vsPath, fsPath);
 
     for (auto light : *ctx->rp->ctx->lights) {
         int index = light->index;

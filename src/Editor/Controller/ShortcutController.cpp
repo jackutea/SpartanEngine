@@ -40,18 +40,18 @@ static void ProcessDebugCamera(EditorContext *ctx, Engine *engine, float dt) {
             move.x += 1;
         }
 
-        Vector3 moveX = Vector3Scale(cameraRight, move.x);
-        Vector3 moveZ = Vector3Scale(cameraFwd, move.z);
-        move = Vector3Add(moveX, moveZ);
+        Vector3 moveX = cameraRight * move.x;
+        Vector3 moveZ = cameraFwd * move.z;
+        move = moveX + moveZ;
         move = Vector3Normalize(move);
         move.x *= xMoveSpeed;
         move.z *= zMoveSpeed;
 
         Vector2 rotateV2 = Vector2Scale(GetMouseDelta(), rotateSpeed);
-        Vector3 rotate = {-rotateV2.x, -rotateV2.y, 0};
+        Vector2 rotate = {-rotateV2.x, -rotateV2.y};
 
-        mainCamera->Move(Vector3Scale(move, dt));
-        mainCamera->Rotate(Vector3Scale(rotate, dt));
+        mainCamera->Move(move * dt);
+        mainCamera->Rotate(rotate * dt);
     }
 }
 

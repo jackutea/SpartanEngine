@@ -18,10 +18,11 @@ public:
 
     TextureAsset *Texture_Load(const char *path);
     TextureAsset *Texture_LoadCubemap(const char *name, const char *path);
+    TextureAsset *Texture_LoadCubemapHDRI(Shader shader, int size, int e_PIXELFORMAT, const char *name, const char *path);
     TextureAsset *Texture_GetByID(unsigned int id);
     void Texture_Unload(unsigned int id);
 
-    ShaderAsset *Shader_Load(const char *name, const char *vsPath, const char *fsPath);
+    ShaderAsset *Shader_Load(RPShaderType type, const char *name, const char *vsPath, const char *fsPath);
     ShaderAsset *Shader_GetByID(unsigned int id);
     ShaderAsset *Shader_GetByName(const char *name);
     void Shader_Unload(unsigned int id);

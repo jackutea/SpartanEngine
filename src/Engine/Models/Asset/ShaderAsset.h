@@ -10,6 +10,7 @@ public:
     char *vsPath;
     char *fsPath;
     Shader shader;
+    RPShaderType type;
 
     // Shader locations
     int lit_enabledLoc;
@@ -26,7 +27,7 @@ public:
     ~ShaderAsset();
     unsigned int GetID();
     const char *GetName();
-    void Load(const char *name, const char *vsPath, const char *fsPath);
+    void Load(RPShaderType type, const char *name, const char *vsPath, const char *fsPath);
     void InitLocs(int lightIndex);
     void SetValue(int locIndex, void *value, int uniformType);
 };
