@@ -4,6 +4,9 @@
 enum class RPSkyType {
     None,
     SolidColor,
+    Cubemap,    // Implementing
+    HDRI,       // Not implemented
+    Atmosphere, // Not implemented
 };
 
 #endif // ENGINE_ENUMS_RPSKYTYPE_H__

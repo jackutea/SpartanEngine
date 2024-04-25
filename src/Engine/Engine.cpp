@@ -103,6 +103,11 @@ TextureAsset *Engine::Texture_Load(const char *name, const char *path) {
     TextureAsset *texture = ctx->assetManager->Texture_Load(path);
     return texture;
 }
+
+TextureAsset *Engine::Texture_LoadCubemap(const char *name, const char *path) {
+    TextureAsset *texture = ctx->assetManager->Texture_LoadCubemap(name, path);
+    return texture;
+}
 #pragma endregion
 
 #pragma region Shader

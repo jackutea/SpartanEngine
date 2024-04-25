@@ -13,23 +13,26 @@ void UserMain::OnStart(EngineAPI* api) {
     // Model
     ModelAsset* model = api->Asset_LoadModel("Sphere", "assets/built_in/models/mesh_polyball.glb");
     
-    ModelAsset* model2 = api->Asset_LoadModel("Sphere", "assets/built_in/models/mesh_polysphere.glb");
+    ModelAsset* model2 = api->Asset_LoadModel("Sphere", "assets/built_in/models/mesh_cube.glb");
     // model2->model = LoadModelFromMesh(GenMeshSphere(1, 32, 32));
 
     auto tex = api->Asset_LoadTexture("white", "assets/built_in/textures/tex_white.png");
+    auto tex2 = api->Asset_LoadCubemapTexture("white", "assets/built_in/textures/tex_cubemap.png");
+
     auto sha = api->Asset_LoadShader("lit", "assets/user/glsl330/shader_vertex_lit.vs", "assets/user/glsl330/shader_vertex_lit.fs");
-    // auto sha2 = api->Asset_LoadShader("lit2", "assets/user/glsl330/shader_vertex_lit.vs", "assets/user/glsl330/shader_vertex_lit.fs");
+    auto sha2 = api->Asset_LoadShader("lit2", "assets/user/glsl330/shader_skybox.vs", "assets/user/glsl330/shader_skybox.fs");
 
     // 上各种贴图
     model->SetTexture(0, MATERIAL_MAP_DIFFUSE, tex->texture);
     model->SetShader(0, sha->shader);
 
-    model2->SetTexture(0, MATERIAL_MAP_DIFFUSE, tex->texture);
-    model2->SetShader(0, sha->shader);
+    model2->SetTexture(0, MATERIAL_MAP_CUBEMAP, tex2->texture);
+    model2->SetShader(0, sha2->shader);
 
     ctx->model = model;
     ctx->model2 = model2;
     ctx->tex = tex;
+    ctx->tex2 = tex2;
     ctx->sha = sha;
 
     // Sky

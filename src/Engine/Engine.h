@@ -40,6 +40,7 @@ public:
 
 #pragma region Texture
     TextureAsset* Texture_Load(const char* name, const char* path);
+    TextureAsset* Texture_LoadCubemap(const char* name, const char* path);
 #pragma endregion
 
 #pragma region Shader

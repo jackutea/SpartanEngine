@@ -13,6 +13,7 @@ public:
     ~TextureAsset();
     unsigned int GetID();
     void Load(const char *path);
+    void LoadCubemapVertical(const char *name, const char *path);
 };
 
 #endif // ENGINE_MODEL_TEXTURE_ASSET_H__

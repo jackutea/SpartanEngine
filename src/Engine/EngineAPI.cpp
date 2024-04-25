@@ -22,6 +22,10 @@ TextureAsset* EngineAPI::Asset_LoadTexture(const char* name, const char* path) {
     return engine->Texture_Load(name, path);
 }
 
+TextureAsset* EngineAPI::Asset_LoadCubemapTexture(const char* name, const char* path) {
+    return engine->Texture_LoadCubemap(name, path);
+}
+
 ShaderAsset* EngineAPI::Asset_LoadShader(const char* name, const char* vsPath, const char* fsPath) {
     return engine->Shader_Load(name, vsPath, fsPath);
 }

@@ -7,6 +7,7 @@ public:
     ModelAsset* model;
     ModelAsset* model2;
     TextureAsset* tex;
+    TextureAsset* tex2;
     ShaderAsset* sha;
     ShaderAsset* sha2;
 

@@ -18,10 +18,11 @@
         - Directional
         - Point
         - Spot
-    - Opaque Model
+    * Opaque Model
     - Skybox
-        - Atmospheric scattering
+        * Cubemap
         - HDRI
+        - Atmospheric scattering
     - Transparent Model
     - PP
     - UI

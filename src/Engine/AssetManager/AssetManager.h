@@ -17,6 +17,7 @@ public:
     void Model_Unload(unsigned int id);
 
     TextureAsset *Texture_Load(const char *path);
+    TextureAsset *Texture_LoadCubemap(const char *name, const char *path);
     TextureAsset *Texture_GetByID(unsigned int id);
     void Texture_Unload(unsigned int id);
 

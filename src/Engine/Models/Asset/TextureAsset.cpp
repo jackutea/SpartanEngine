@@ -21,3 +21,13 @@ void TextureAsset::Load(const char *path) {
         std::cerr << "Loaded texture: " << path << std::endl;
     }
 }
+
+void TextureAsset::LoadCubemapVertical(const char *name, const char *path) {
+    try {
+        Image image = LoadImage(path);
+        texture = LoadTextureCubemap(image, CUBEMAP_LAYOUT_LINE_VERTICAL);
+        UnloadImage(image);
+    } catch (...) {
+        std::cerr << "Loaded cubemap texture: " << path << std::endl;
+    }
+}

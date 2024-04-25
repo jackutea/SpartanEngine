@@ -47,6 +47,14 @@ TextureAsset *AssetManager::Texture_Load(const char *path) {
     return texture;
 }
 
+TextureAsset *AssetManager::Texture_LoadCubemap(const char *name, const char *path) {
+    TextureAsset *texture = new TextureAsset();
+    texture->id = ctx->textureIDRecord++;
+    texture->LoadCubemapVertical(name, path);
+    ctx->textures->insert({texture->id, texture});
+    return texture;
+}
+
 TextureAsset *AssetManager::Texture_GetByID(unsigned int id) {
     if (ctx->textures->count(id) == 0) {
         SLog("Texture not found: %d", id);
