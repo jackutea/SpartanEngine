@@ -11,7 +11,7 @@ public:
 public:
     UserMain();
     ~UserMain();
-    void OnStart(EngineAPI* api);
+    void Initialize(EngineAPI* api);
     void OnLogicUpdate(EngineAPI* api, float dt);
     void OnReadyDraw(EngineAPI* api);
     void OnPostGUI(EngineAPI* api, float dt);

@@ -14,7 +14,7 @@ public:
 
 #pragma region LifeCycle
     void Initialize();
-    void LogicTick(float dt);
+    void OnLogicUpdate(float dt);
     void Render();
     void ProcessAndRenderUI();
 #pragma endregion

@@ -7,6 +7,9 @@
     - Material
     - Shader
     - Texture
+    - Animation
+* Sprite Rendering
+    - Animation
 - Camera
 - Shader Library
     - Lighting
@@ -19,8 +22,8 @@
         - Point
         - Spot
     * Opaque Model
-    - Skybox
-        * Cubemap
+    * Sprite
+    - Sky
         - HDRI
         - Atmospheric scattering
     - Transparent Model

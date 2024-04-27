@@ -16,7 +16,7 @@ public:
     ~EditorMain();
     void Inject(Engine *engine);
     void Initialize();
-    void ProcessUserInterface(float dt);
+    void OnLogicUpdate(float dt);
     void OnReadyDraw();
 };
 

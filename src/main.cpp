@@ -35,9 +35,9 @@ int main() {
 #endif
 
         // ==== Start ====
-        user->OnStart(api);
+        user->Initialize(api);
 
-    } catch(SPTException e) {
+    } catch (SPTException e) {
         e.What();
     } catch (...) {
         TraceLog(LOG_ERROR, "Init Error.");
@@ -52,13 +52,14 @@ int main() {
         try {
 #ifndef SPARTAN_RUNTIME_ONLY
             // Editor Logic
-            editor->ProcessUserInterface(dt);
+            editor->OnLogicUpdate(dt);
 #endif
             // Engine Logic
-            engine->LogicTick(dt);
+            engine->OnLogicUpdate(dt);
 
             // User Logic
             user->OnLogicUpdate(api, dt);
+
         } catch (...) {
             TraceLog(LOG_ERROR, "Logic Tick Error.");
         }

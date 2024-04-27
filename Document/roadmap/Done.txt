@@ -1,0 +1,33 @@
+==== Runtime ====
+- Auto Build
+    - Collecting .cpp
+    - Link .o .dll
+
+- Lifecycle
+    - OnStart
+    - OnLogicUpdate
+    - OnFixLogicUpdate
+    - OnReadyDraw
+    - OnPostGUI
+    - OnQuit
+
+- AssetManager
+    - LoadModel / UnloadModel / GetModelByID
+    - LoadShader / UnloadShader / GetShaderByID
+    - LoadTexture / UnloadTexture / GetTextureByID
+    - LoadFont / GetFontByID
+
+- Camera 3D
+    - Move
+    - Rotate
+
+- Camera 2D
+
+- RenderPipeline
+    - Sky
+        - Cubemap
+
+==== Editor ====
+- Debug
+    - Reload All Shaders
+    - Debug Camera Controller

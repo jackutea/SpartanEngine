@@ -9,7 +9,7 @@ UserMain::~UserMain() {
     delete ctx;
 }
 
-void UserMain::OnStart(EngineAPI* api) {
+void UserMain::Initialize(EngineAPI* api) {
     // Model
     ModelAsset* model = api->Asset_LoadModel("Sphere1", "assets/built_in/models/mesh_polyball.glb");
     ShaderAsset* sha = api->Asset_LoadShader(RPShaderType::Lit, "lit1", "assets/user/glsl330/shader_vertex_lit.vs", "assets/user/glsl330/shader_vertex_lit.fs");
@@ -22,7 +22,7 @@ void UserMain::OnStart(EngineAPI* api) {
     // Sky
     SkyRenderer* sky = api->RP_GetSky();
     sky->solidColor = {17, 17, 17, 255};
-    sky->skyType = RPSkyType::Cubemap;
+    sky->skyType = RPSkyType::SolidColor;
     ShaderAsset* sha2 = api->Asset_LoadShader(RPShaderType::Sky_Cubemap, "lit2", "assets/user/glsl330/shader_skybox.vs", "assets/user/glsl330/shader_skybox.fs");
     TextureAsset* tex2 = api->Asset_LoadCubemapTexture("white2", "assets/built_in/textures/skybox.png");
     sky->SetCubemap(sha2, tex2);
@@ -37,6 +37,7 @@ void UserMain::OnLogicUpdate(EngineAPI* api, float dt) {
 
     // 1. Process Input
     CameraModel* camera = api->Camera_GetMain();
+    camera->type = CameraType::Camera2D;
     // camera->Move({0, 0, 1*dt});
 
     // 2. Normal Logic Tick
@@ -67,7 +68,7 @@ void UserMain::OnFixLogicUpdate(EngineAPI* api, float fixdt) {
     // Physics Simulation
 }
 
-// 添加至绘制列表
+// Add to RenderPipeline(RP) if needed
 void UserMain::OnReadyDraw(EngineAPI* api) {
     api->RP_Model_Add(ctx->modelID);
 }

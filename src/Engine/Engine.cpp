@@ -26,7 +26,7 @@ void Engine::Initialize() {
     sky->skyboxModel->renderTF.scale = {1, 1, 1};
 }
 
-void Engine::LogicTick(float dt) {
+void Engine::OnLogicUpdate(float dt) {
     // Update Logic here
     // ctx->cameraManager->cam3D->target.x += 100 * dt;
 }

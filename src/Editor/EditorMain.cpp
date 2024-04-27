@@ -18,7 +18,7 @@ void EditorMain::Inject(Engine *engine) {
 void EditorMain::Initialize() {
 }
 
-void EditorMain::ProcessUserInterface(float dt) {
+void EditorMain::OnLogicUpdate(float dt) {
     shortcutController->Process(engine, dt);
 }
 
