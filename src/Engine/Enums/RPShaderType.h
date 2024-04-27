@@ -2,6 +2,8 @@
 #define ENGINE_ENUMS_RPSHADERTYPE_H__
 
 enum class RPShaderType {
+    None,
+    Custom,
     Lit,
     Unlit,
     Sky_Cubemap,

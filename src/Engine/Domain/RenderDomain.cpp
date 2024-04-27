@@ -29,6 +29,12 @@ static void PrepareShader_Lit(EngineContext *ctx, ShaderAsset *shader) {
         shader->SetValue(shader->lit_attenuationLoc, &attenuation, SHADER_UNIFORM_FLOAT);
     }
     shader->SetValue(shader->lit_countLoc, &lightCount, SHADER_UNIFORM_INT);
+
+    // Ambient
+    Color ambient = ctx->rp->ctx->sky->ambientColor;
+    float fambient[4] = {(float)ambient.r / (float)255, (float)ambient.g / (float)255, (float)ambient.b / (float)255, (float)ambient.a / (float)255};
+    shader->SetValue(shader->ambientLoc, &fambient, SHADER_UNIFORM_VEC4);
+
 }
 
 void PrepareShader(EngineContext *ctx) {
@@ -45,11 +51,6 @@ void PrepareShader(EngineContext *ctx) {
 
         // ViewPos
         shader->SetValue(shader->shader.locs[SHADER_LOC_VECTOR_VIEW], fviewPos, SHADER_UNIFORM_VEC3);
-
-        // Ambient
-        Color ambient = ctx->rp->ctx->sky->ambientColor;
-        float fambient[4] = {(float)ambient.r / (float)255, (float)ambient.g / (float)255, (float)ambient.b / (float)255, (float)ambient.a / (float)255};
-        shader->SetValue(shader->ambientLoc, &fambient, SHADER_UNIFORM_VEC4);
     }
 }
 
