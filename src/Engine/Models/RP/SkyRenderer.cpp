@@ -1,5 +1,4 @@
 #include "SkyRenderer.h"
-#include "../Asset/ModelAsset.h"
 
 SkyRenderer::SkyRenderer() {
     skyType = RPSkyType::None;
@@ -8,7 +7,13 @@ SkyRenderer::SkyRenderer() {
 }
 
 SkyRenderer::~SkyRenderer() {
-    if (skyboxModel != nullptr) {
-        delete skyboxModel;
-    }
+}
+
+void SkyRenderer::SetCubemap(ShaderAsset *shader, TextureAsset *cubemap) {
+    skyboxModel->SetTexture(0, MATERIAL_MAP_CUBEMAP, cubemap->texture);
+    skyboxModel->SetShader(0, shader->shader);
+
+    int envMap = MATERIAL_MAP_CUBEMAP;
+    SetShaderValue(skyboxModel->model.materials[0].shader, GetShaderLocation(skyboxModel->model.materials[0].shader, "environmentMap"), &envMap,
+                   SHADER_UNIFORM_INT);
 }

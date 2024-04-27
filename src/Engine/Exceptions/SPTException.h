@@ -3,6 +3,9 @@
 
 #include <iostream>
 
+// concat file and line to SPT_EXCEPTION
+#define SPT_EXCEPTION(msg) SPTException(TextFormat("%s(%s)%s",__FILE__,__LINE__,msg));
+
 class SPTException {
 public:
     const char* message;

@@ -17,6 +17,10 @@ unsigned int ModelAsset::GetID() {
 
 void ModelAsset::Load(const char *path) {
     model = LoadModel(path);
+    if (model.meshCount == 0) {
+        throw SPT_EXCEPTION("ModelAsset::Load: model.meshCount == 0");
+        return;
+    }
 }
 
 void ModelAsset::Draw() {
@@ -29,12 +33,16 @@ void ModelAsset::Draw() {
 }
 
 void ModelAsset::SetTexture(int matIndex, int texIndex, Texture2D texture) {
+    if (model.materialCount <= matIndex) {
+        throw SPT_EXCEPTION("ModelAsset::SetTexture: matIndex out of range");
+        return;
+    }
     model.materials[matIndex].maps[texIndex].texture = texture;
 }
 
 void ModelAsset::SetShader(int matIndex, Shader shader) {
     if (model.materialCount <= matIndex) {
-        throw SPTException("ModelAsset::SetShader: matIndex out of range");
+        throw SPT_EXCEPTION("ModelAsset::SetShader: matIndex out of range");
         return;
     }
     model.materials[matIndex].shader = shader;

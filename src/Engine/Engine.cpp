@@ -99,12 +99,20 @@ ModelAsset *Engine::Model_Load(const char *name, const char *path) {
     ModelAsset *model = ctx->assetManager->Model_Load(name, path);
     return model;
 }
+
+ModelAsset *Engine::Model_Get(unsigned int id) {
+    return ctx->assetManager->Model_GetByID(id);
+}
 #pragma endregion
 
 #pragma region Texture
 TextureAsset *Engine::Texture_Load(const char *name, const char *path) {
     TextureAsset *texture = ctx->assetManager->Texture_Load(path);
     return texture;
+}
+
+TextureAsset *Engine::Texture_Get(unsigned int id) {
+    return ctx->assetManager->Texture_GetByID(id);
 }
 
 TextureAsset *Engine::Texture_LoadCubemap(const char *name, const char *path) {
@@ -119,25 +127,32 @@ TextureAsset *Engine::Texture_LoadCubemapHDRI(Shader shader, int size, int e_PIX
 #pragma endregion
 
 #pragma region Shader
+static void S_Shader_InitLocs(EngineContext *ctx, ShaderAsset *shader) {
+    RPShaderType type = shader->type;
+    if (type == RPShaderType::Lit) {
+        for (auto light : *ctx->rp->ctx->lights) {
+            int index = light->index;
+            shader->InitLocs(index);
+        }
+    } else if (type == RPShaderType::Sky_Cubemap) {
+    }
+}
+
 ShaderAsset *Engine::Shader_Load(RPShaderType type, const char *name, const char *vsPath, const char *fsPath) {
 
     ShaderAsset *shader = ctx->assetManager->Shader_Load(type, name, vsPath, fsPath);
-
-    for (auto light : *ctx->rp->ctx->lights) {
-        int index = light->index;
-        shader->InitLocs(index);
-    }
-
+    S_Shader_InitLocs(ctx, shader);
     return shader;
+}
+
+ShaderAsset *Engine::Shader_Get(unsigned int id) {
+    return ctx->assetManager->Shader_GetByID(id);
 }
 
 void Engine::Shader_Reload(ShaderAsset *shader) {
     UnloadShader(shader->shader);
     shader->shader = LoadShader(shader->vsPath, shader->fsPath);
-    for (auto light : *ctx->rp->ctx->lights) {
-        int index = light->index;
-        shader->InitLocs(index);
-    }
+    S_Shader_InitLocs(ctx, shader);
 }
 
 void Engine::Shader_ReloadAll() {
@@ -187,5 +202,14 @@ FontAsset *Engine::Font_GetDefault() {
 #pragma region RP
 void Engine::RP_Model_Add(ModelAsset *model) {
     ctx->rp->Model_Add(model);
+}
+
+void Engine::RP_Model_Add(unsigned int id) {
+    ModelAsset *model = ctx->assetManager->Model_GetByID(id);
+    if (model != nullptr) {
+        RP_Model_Add(model);
+    } else {
+        throw SPT_EXCEPTION("Model Not Found");
+    }
 }
 #pragma endregion

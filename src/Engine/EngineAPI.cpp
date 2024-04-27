@@ -18,8 +18,16 @@ ModelAsset* EngineAPI::Asset_LoadModel(const char* name, const char* path) {
     return engine->Model_Load(name, path);
 }
 
+ModelAsset* EngineAPI::Asset_GetModel(unsigned int id) {
+    return engine->Model_Get(id);
+}
+
 TextureAsset* EngineAPI::Asset_LoadTexture(const char* name, const char* path) {
     return engine->Texture_Load(name, path);
+}
+
+TextureAsset* EngineAPI::Asset_GetTexture(unsigned int id) {
+    return engine->Texture_Get(id);
 }
 
 TextureAsset* EngineAPI::Asset_LoadCubemapTexture(const char* name, const char* path) {
@@ -32,6 +40,10 @@ TextureAsset* EngineAPI::Asset_LoadCubemapHDRI(Shader shader, int size, int e_PI
 
 ShaderAsset* EngineAPI::Asset_LoadShader(RPShaderType type, const char* name, const char* vsPath, const char* fsPath) {
     return engine->Shader_Load(type, name, vsPath, fsPath);
+}
+
+ShaderAsset* EngineAPI::Asset_GetShader(unsigned int id) {
+    return engine->Shader_Get(id);
 }
 
 void EngineAPI::Asset_ReloadShader(ShaderAsset* shader) {
@@ -71,4 +83,8 @@ SkyRenderer* EngineAPI::RP_GetSky() {
 
 void EngineAPI::RP_Model_Add(ModelAsset* model) {
     engine->RP_Model_Add(model);
+}
+
+void EngineAPI::RP_Model_Add(unsigned int id) {
+    engine->RP_Model_Add(id);
 }

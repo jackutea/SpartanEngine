@@ -8,5 +8,5 @@ SPTException::~SPTException() {
 }
 
 void SPTException::What() const {
-    std::cout << "SPTException: " << message << std::endl;
+    std::cout << __FILE__ << "()" << __LINE__ << ") SPTException: " << message << std::endl;
 }

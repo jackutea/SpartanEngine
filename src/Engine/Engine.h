@@ -36,16 +36,19 @@ public:
 
 #pragma region Model
     ModelAsset* Model_Load(const char* name, const char* path);
+    ModelAsset* Model_Get(unsigned int id);
 #pragma endregion
 
 #pragma region Texture
     TextureAsset* Texture_Load(const char* name, const char* path);
+    TextureAsset* Texture_Get(unsigned int id);
     TextureAsset* Texture_LoadCubemap(const char* name, const char* path);
     TextureAsset* Texture_LoadCubemapHDRI(Shader shader, int size, int e_PIXELFORMAT, const char* name, const char* path);
 #pragma endregion
 
 #pragma region Shader
     ShaderAsset* Shader_Load(RPShaderType type, const char* name, const char* vsPath, const char* fsPath);
+    ShaderAsset* Shader_Get(unsigned int id);
     void Shader_Reload(ShaderAsset* shader);
     void Shader_ReloadAll();
 #pragma endregion
@@ -59,6 +62,7 @@ public:
 
 #pragma region RP
     void RP_Model_Add(ModelAsset* model);
+    void RP_Model_Add(unsigned int id);
 #pragma endregion
 };
 
