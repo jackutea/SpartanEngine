@@ -33,7 +33,7 @@ void UserMain::OnLogicUpdate(EngineAPI* api, float dt) {
 
     Vector2 moveAxis = PureFunctions::Input_GetKeyMoveAxis3D(KEY_W, KEY_S, KEY_A, KEY_D);
     ModelAsset* model = api->Asset_GetModel(ctx->modelID);
-    model->tf.translation += (Vector3){moveAxis.x * dt, 0, moveAxis.y * dt};
+    model->renderTF.translation += (Vector3){moveAxis.x * dt, 0, moveAxis.y * dt};
 
     // 1. Process Input
     CameraModel* camera = api->Camera_GetMain();

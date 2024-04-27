@@ -6,7 +6,7 @@
 class ModelAsset {
 public:
     unsigned int id;
-    Transform tf;
+    Transform renderTF;
     Model model;
 
 public:

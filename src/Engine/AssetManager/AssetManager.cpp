@@ -11,9 +11,9 @@ AssetManager::~AssetManager() {
 // ==== Model ====
 ModelAsset *AssetManager::Model_Load(const char *name, const char *path) {
     ModelAsset *model = new ModelAsset();
-    model->tf.rotation = QuaternionIdentity();
-    model->tf.translation = Vector3Zero();
-    model->tf.scale = Vector3One();
+    model->renderTF.rotation = QuaternionIdentity();
+    model->renderTF.translation = Vector3Zero();
+    model->renderTF.scale = Vector3One();
     model->id = ctx->modelIDRecord++;
     model->Load(path);
     ctx->models->insert({model->id, model});
