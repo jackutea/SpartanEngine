@@ -13,6 +13,10 @@ void EngineAPI::Inject(Engine* engine) {
     this->engine = engine;
 }
 
+void EngineAPI::Test_ForScripts() {
+    SLog("Test for scripts");
+}
+
 // ==== Asset ====
 ModelAsset* EngineAPI::Asset_LoadModel(const char* name, const char* path) {
     return engine->Model_Load(name, path);

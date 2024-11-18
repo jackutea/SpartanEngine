@@ -13,6 +13,8 @@ public:
 
     void Inject(Engine* engine);
 
+    SPTAPI void Test_ForScripts();
+
     // ==== Asset ====
     ModelAsset* Asset_LoadModel(const char* name, const char* path);
     ModelAsset* Asset_GetModel(unsigned int id);

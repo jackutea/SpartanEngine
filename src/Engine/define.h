@@ -6,6 +6,8 @@
 
 #define SPARTAN_ENGINE
 
+#define SPTAPI __declspec(dllexport)
+
 // show line number and file name
 #define SLog(...) printf("info: %s(%d): ", __FILE__, __LINE__); printf(__VA_ARGS__); printf("\r\n")
 #define SLogWarn(...) printf("warn: %s(%d): ", __FILE__, __LINE__); printf(__VA_ARGS__); printf("\r\n")

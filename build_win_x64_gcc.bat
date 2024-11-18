@@ -1,6 +1,7 @@
 set "buildType=%1"
 set "dll_raylib=.\lib\raylib.dll"
 set "link_editor="
+set "prebuild=.\BuildTools\Prebuild\prebuild.exe"
 
 @REM Delete old build
 if exist build rmdir /s /q build
@@ -8,14 +9,14 @@ if not exist bin mkdir bin
 if not exist build mkdir build
 
 @REM User
-prebuild g++ .cpp ./src/User ./build
+%prebuild% g++ .cpp ./src/User ./build
 
 @REM Engine
-prebuild g++ .cpp ./src/Engine ./build
+%prebuild% g++ .cpp ./src/Engine ./build
 
 @REM Editor
 if "%buildType%" equ "--editor" (
-    prebuild g++ .cpp ./src/Editor ./build
+    %prebuild% g++ .cpp ./src/Editor ./build
 )
 
 @REM Main
