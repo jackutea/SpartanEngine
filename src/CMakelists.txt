@@ -30,3 +30,4 @@ set(VCPKG_ROOT "C:/vcpkg")
 # Win64
 include_directories(${VCPKG_ROOT}/installed/x64-windows/include)
 target_link_libraries(SpartanEngine ${VCPKG_ROOT}/installed/x64-windows/lib/raylib.lib)
+target_link_libraries(SpartanEngine ${VCPKG_ROOT}/installed/x64-windows/lib/nethost.lib)
