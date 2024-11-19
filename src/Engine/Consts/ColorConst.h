@@ -1,7 +1,7 @@
 #ifndef ENGINE_CONSTS_COLORCONST_H__
 #define ENGINE_CONSTS_COLORCONST_H__
 
-#include "../../../include/raylib.h"
+#include <raylib.h>
 
 namespace ColorConst {
 const Color white = {255, 255, 255, 255};

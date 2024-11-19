@@ -1,0 +1,28 @@
+#### Basic ####
+# Set the minimum version of CMake that can be used
+cmake_minimum_required(VERSION 3.27)
+
+# Project name
+project(SpartanEngine)
+
+# Debug
+# set(CMAKE_DEBUG_POSTFIX d)
+
+#### Source Files ####
+file(GLOB_RECURSE SOURCES
+    "*.cpp"
+)
+add_executable(SpartanEngine ${SOURCES} main.cpp)
+
+#### Internal Variables ####
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_STANDARD 17)
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../bin)
+
+#### Custom Variables ####
+set(VCPKG_ROOT "C:/vcpkg")
+
+#### Dependencies ####
+# Win64
+include_directories(${VCPKG_ROOT}/installed/x64-windows/include)
+target_link_libraries(SpartanEngine ${VCPKG_ROOT}/installed/x64-windows/lib/raylib.lib)

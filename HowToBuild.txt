@@ -1,0 +1,11 @@
+1. vcpkg 2024-11-12
+    1.1 Download vcpkg zip: https://github.com/microsoft/vcpkg
+    1.2 run: bootstrap-vcpkg.bat or .sh
+    1.3 configure: Add to OS Path, variant name VCPKG_ROOT
+    1.4 initialize: `cd vcpkg` and `vcpkg integrate install`
+    1.5 install libraries: `vcpkg install raylib`......
+
+2. cmake 3.27.7
+    - Download and install
+    - CMakelists.txt
+        - set(VCPKG_ROOT "youroot")

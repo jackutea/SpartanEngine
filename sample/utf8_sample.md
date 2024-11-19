@@ -1,5 +1,5 @@
 ``` C
-#include "../include/raylib.h"
+#include <raylib.h>
 #include <iostream>
 using namespace std::string_literals;
 

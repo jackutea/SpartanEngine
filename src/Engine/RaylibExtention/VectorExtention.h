@@ -1,8 +1,8 @@
 #ifndef ENGINE_RAYLIBEXTENTION_VECTOREXTENTION_H__
 #define ENGINE_RAYLIBEXTENTION_VECTOREXTENTION_H__
 
-#include "../../../include/raylib.h"
-#include "../../../include/raymath.h"
+#include <raylib.h>
+#include <raymath.h>
 
 // Vector3 + Vector3
 Vector3 operator+(const Vector3 &a, const Vector3 &b);

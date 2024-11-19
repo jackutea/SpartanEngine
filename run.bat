@@ -1,1 +1,1 @@
-call .\bin\game
+call .\bin\SpartanEngine.exe

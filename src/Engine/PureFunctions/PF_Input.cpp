@@ -1,5 +1,5 @@
 #include "PF_Input.h"
-#include "../../../include/raymath.h"
+#include <raymath.h>
 
 namespace PureFunctions {
 // Right-Handed 3D

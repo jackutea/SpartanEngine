@@ -4,9 +4,9 @@
 #include "../define.h"
 #include "../RaylibExtention/VectorExtention.h"
 
-#include "../../../include/raylib.h"
-#include "../../../include/raymath.h"
-#include "../../../include/rlgl.h"
+#include <raylib.h>
+#include <raymath.h>
+#include <rlgl.h>
 
 #include "../Enums/export.h"
 
