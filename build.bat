@@ -1,2 +1,1 @@
-cmake -B build -S src
-cmake --build build
+cmake --build ./build

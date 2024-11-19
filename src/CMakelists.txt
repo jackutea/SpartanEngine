@@ -8,16 +8,20 @@ project(SpartanEngine)
 # Debug
 # set(CMAKE_DEBUG_POSTFIX d)
 
+#### Internal Variables ####
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_STANDARD 17)
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../bin)
+
+# C Compiler by path
+# set(CMAKE_C_COMPILER "C:/mingw/bin/gcc.exe")
+# set(CMAKE_CXX_COMPILER "C:/mingw/bin/g++.exe")
+
 #### Source Files ####
 file(GLOB_RECURSE SOURCES
     "*.cpp"
 )
 add_executable(SpartanEngine ${SOURCES} main.cpp)
-
-#### Internal Variables ####
-set(CMAKE_C_STANDARD 99)
-set(CMAKE_CXX_STANDARD 17)
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../bin)
 
 #### Custom Variables ####
 set(VCPKG_ROOT "C:/vcpkg")

@@ -9,3 +9,11 @@
     - Download and install
     - CMakelists.txt
         - set(VCPKG_ROOT "youroot")
+
+3. coding
+    - c_cpp_properties.json
+
+3. build
+    - `rebuild.bat` to creat new cache and build
+    - or `build.bat` to build from cache
+    - or `run.bat` to run
